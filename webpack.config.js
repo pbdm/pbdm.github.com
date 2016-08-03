@@ -1,15 +1,20 @@
-var autoprefixer = require('autoprefixer');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
-var fileListPlugin = require('filelist-json-webpack-plugin');
+var autoprefixer = require('autoprefixer');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var path = require('path');
+
+var publicPath = path.join(__dirname, 'app', 'public');
+var srcPath = path.join(__dirname, 'app', 'src');
 
 module.exports = {
-  entry: { 
-    js: './js/app.js'
-  }, 
+  entry: {
+    js: path.join(srcPath, 'index.js')
+  },
   output: {
-    filename: 'dist/bundle.js'
+    path: publicPath,
+    filename: 'bundle.js'
   },
   module: {
     loaders:[{
@@ -19,30 +24,24 @@ module.exports = {
     }, {
       test: /\.scss$/,
       exclude: /(node_modules)/,
-      loader: "style!css!postcss!sass"
+      loader: ExtractTextPlugin.extract('style','css!postcss!less')
     }]
   },
   postcss: [ autoprefixer({ browsers: ['> 5%', 'last 2 versions'] }) ],
   plugins: [
-    //new CleanWebpackPlugin(distPath, {
-      //root: __dirname,
-      //verbose: true, 
-      //dry: false
-    //}),
-    new fileListPlugin({
-      key: 'posts',
-      paths: {
-        wiki: './posts/wiki',
-        blog: './posts/blog'
+    new CleanWebpackPlugin( publicPath, {
+      root: __dirname,
+      verbose: true,
+      dry: false
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: path.join(srcPath , 'img'),
+        to: path.join(publicPath , 'img')
       }
-    }),
-    new HtmlWebpackPlugin({
-      template: 'tmpl/index.html',
-      filename: 'index.html',
-      hash: true
-    }),
-    //new webpack.DefinePlugin({
-      //posts: JSON.stringify(posts)
-    //})
+    ]),
+    new ExtractTextPlugin("style.css", {
+      allChunks: true
+    })
   ]
 };

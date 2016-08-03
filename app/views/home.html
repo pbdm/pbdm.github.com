@@ -1,0 +1,14 @@
+<div class='container'>
+  <ul>
+    <h2>Wiki</h2>
+    <% posts.wiki.forEach(function(r){ %>
+      <li><a href='wiki/<%= r.path%>'><%= r.title %></a></li>
+    <% }) %>
+  </ul>
+  <ul>
+    <h2>Blog</h2>
+    <% posts.blog.forEach(function(r){ %>
+      <li><a href='blog/<%= r.path%>'><%= r.title %></a></li>
+    <% }) %>
+  </ul>
+</div>
