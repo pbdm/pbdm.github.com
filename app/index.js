@@ -28,6 +28,7 @@ router
   .get('/', function *(next) {
     data.posts = postData
     data.page = 'home'
+    console.log(data);
     yield this.render('home', data)
   })
   .get('wiki', '/wiki/:name?', function *(next) {
@@ -37,7 +38,12 @@ router
   })
   .get('blog', '/blog/:name?', function *(next) {
     let d = Util.getPostData(postData, 'blog', this.params.name, data)
-    d.page ='post'
+    d.page ='blog'
+    yield this.render('post', d)
+  })
+  .get('other', '/other/:name?', function *(next) {
+    let d = Util.getPostData(postData, 'other', this.params.name, data)
+    d.page ='other'
     yield this.render('post', d)
   })
   .get('*', function *(next) {

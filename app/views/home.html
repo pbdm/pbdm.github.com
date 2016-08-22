@@ -11,4 +11,10 @@
       <li><a href='blog/<%= r.path%>'><%= r.title %></a></li>
     <% }) %>
   </ul>
+  <ul>
+    <h2>Others</h2>
+    <% posts.other.forEach(function(r){ %>
+      <li><a href='other/<%= r.path%>'><%= r.title %></a></li>
+    <% }) %>
+  </ul>
 </div>
