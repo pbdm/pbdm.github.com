@@ -6,16 +6,20 @@ var hljs = require('highlight.js');
 
 // for highlight code
 const renderer = new marked.Renderer();
-renderer.code = (code, language) => {
+renderer.code = (code, lang) => {
   let highlighted;
   if (typeof lang === 'undefined') {
     highlighted = hljs.highlightAuto(code).value;
+  } else if (lang === 'flow') {
+    return '<div class="flow">'+code+'</div>';
+  } else if (lang === 'seq') {
+    return '<div class="seq">'+code+'</div>';
   } else if (lang === 'nohighlight') {
     highlighted = code;
   } else {
     highlighted = hljs.highlight(lang, code).value;
   }
-  return `<pre><code class="hljs${ language || ''}">${highlighted}</code></pre>`;
+  return `<pre><code class="hljs${ lang || ''}">${highlighted}</code></pre>`;
 };
 
 marked.setOptions({ renderer });
