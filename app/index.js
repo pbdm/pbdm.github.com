@@ -28,7 +28,6 @@ router
   .get('/', function *(next) {
     data.posts = postData
     data.page = 'home'
-    console.log(data);
     yield this.render('home', data)
   })
   .get('wiki', '/wiki/:name?', function *(next) {

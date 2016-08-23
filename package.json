@@ -6,6 +6,7 @@
   "scripts": {
     "wstart": "./node_modules/webpack/bin/webpack.js -w --progress",
     "wbuild": "./node_modules/webpack/bin/webpack.js -p --progress",
+    "reload": "./node_modules/browser-sync/bin/browser-sync.js start --proxy \"localhost:3000\" --files \"./**/*.md\" --port 3001",
     "start": "npm run wbuild && ./node_modules/pm2/bin/pm2 startOrRestart process.json",
     "debug": "npm run wbuild && node ./node_modules/nodemon/bin/nodemon.js ./app/index.js",
     "#debug": "node-debug ./app/index.js",
@@ -34,6 +35,7 @@
     "babel-core": "^6.11.4",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.13.2",
+    "browser-sync": "^2.14.0",
     "clean-webpack-plugin": "^0.1.10",
     "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.23.1",
