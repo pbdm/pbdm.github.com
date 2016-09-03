@@ -6,9 +6,9 @@
   "scripts": {
     "wstart": "./node_modules/webpack/bin/webpack.js -w --progress",
     "wbuild": "./node_modules/webpack/bin/webpack.js -p --progress",
-    "reload": "./node_modules/browser-sync/bin/browser-sync.js start --proxy \"localhost:3000\" --files \"./**/*.md\" --port 3001",
+    "reload": "./node_modules/browser-sync/bin/browser-sync.js start --proxy \"localhost:3000\" --files \"./**/*.md\" --port 3001 --no-open",
     "start": "npm run wbuild && ./node_modules/pm2/bin/pm2 startOrRestart process.json",
-    "debug": "npm run wbuild && node ./node_modules/nodemon/bin/nodemon.js ./app/index.js",
+    "debug": "./node_modules/nodemon/bin/nodemon.js ./app/index.js",
     "#debug": "node-debug ./app/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

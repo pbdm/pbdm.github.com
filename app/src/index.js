@@ -1,4 +1,4 @@
-import './css/style.scss';
+import './css/style.less';
 import flowchart from 'flowchart.js';
 
 function htmlDecode(input) {

@@ -1,5 +1,5 @@
 module.exports = {
-  name: '琥珀草',
+  name: 'PB',
   year: new Date().getFullYear(),
   paths: {
     wiki: './posts/wiki',

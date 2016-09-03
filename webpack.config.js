@@ -22,7 +22,7 @@ module.exports = {
       exclude: /(node_modules)/,
       loader: "babel"
     }, {
-      test: /\.scss$/,
+      test: /\.less$/,
       exclude: /(node_modules)/,
       loader: ExtractTextPlugin.extract('style','css!postcss!less')
     }]
