@@ -63,4 +63,4 @@
 * `2016-08-14`将服务迁移到 [HYPER_](https://hyper.sh)
 * `2016-08-22`添加[flowchart.js](http://flowchart.js.org/)和[js-sequence-diagrams](https://bramp.github.io/js-sequence-diagrams/)作为 `markdown` 的图形解析器
 * `2016-08-23`添加[browser-sync](https://www.browsersync.io/), 引入 `bootcdn`作为 CDN
-
+* `2016-09-03`简化样式
