@@ -1,17 +1,17 @@
+<h2>Wiki</h2>
 <ul>
-  <h2>Wiki</h2>
   <% posts.wiki.forEach(function(r){ %>
   <li><a href='wiki/<%= r.path%>'><%= r.title %></a></li>
   <% }) %>
 </ul>
+<h2>Blog</h2>
 <ul>
-  <h2>Blog</h2>
   <% posts.blog.forEach(function(r){ %>
-  <li><a href='blog/<%= r.path%>'><%= r.title %></a></li>
+  <li><small><%= r.date %></small>  <a href='blog/<%= r.path%>'><%= r.title %></a></li>
   <% }) %>
 </ul>
+<h2>Others</h2>
 <ul>
-  <h2>Others</h2>
   <% posts.other.forEach(function(r){ %>
   <li><a href='other/<%= r.path%>'><%= r.title %></a></li>
   <% }) %>
