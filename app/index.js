@@ -52,7 +52,7 @@ router
     data.posts = postData
     yield this.render('home', data)
   })
-  .get('/posts/:type/:name?', function *(next) {
+  .get('/:type/:name', function *(next) {
     let d = Util.getPostData(marked, postData, this.params.type, this.params.name, data)
     if (d) {
       yield this.render('post', d)

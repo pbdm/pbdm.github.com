@@ -4,7 +4,7 @@
   <% posts[t].forEach(function(r){ %>
   <li>
     <small><%= r.date %></small>  
-    <a href='<%= "posts/" + t + "/" + r.path%>'><%= r.title %></a>
+    <a href='<%= t + "/" + r.path%>'><%= r.title %></a>
   </li>
   <% }) %>
 </ul>
