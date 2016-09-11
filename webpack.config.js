@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var path = require('path');
 
 var publicPath = path.join(__dirname, 'app', 'public');
@@ -23,7 +24,7 @@ module.exports = {
     }, {
       test: /\.less$/,
       exclude: /(node_modules)/,
-      loader: 'style!css!postcss!less'
+      loader: ExtractTextPlugin.extract('style','css!postcss!less')
     }]
   },
   postcss: [ autoprefixer({ browsers: ['> 5%', 'last 2 versions'] }) ],
@@ -38,6 +39,9 @@ module.exports = {
         from: path.join(srcPath , 'img'),
         to: path.join(publicPath , 'img')
       }
-    ])
+    ]),
+    new ExtractTextPlugin("style.css", {
+      allChunks: true
+    })
   ]
 };
