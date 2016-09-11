@@ -26,7 +26,7 @@ renderer.code = (code, lang) => {
   } else {
     highlighted = hljs.highlight(lang, code).value;
   }
-  return `<pre><code class="hljs${ lang || ''}">${highlighted}</code></pre>`;
+  return `<pre><code class="hljs">${highlighted}</code></pre>`;
 };
 
 marked.setOptions({ renderer });
