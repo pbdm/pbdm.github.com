@@ -1,18 +1,11 @@
-<h2>Wiki</h2>
+<% Object.keys(posts).forEach(function(t){ %>
+<h2><%= t %></h2>
 <ul>
-  <% posts.wiki.forEach(function(r){ %>
-  <li><a href='wiki/<%= r.path%>'><%= r.title %></a></li>
+  <% posts[t].forEach(function(r){ %>
+  <li>
+    <small><%= r.date %></small>  
+    <a href='<%= "posts/" + t + "/" + r.path%>'><%= r.title %></a>
+  </li>
   <% }) %>
 </ul>
-<h2>Blog</h2>
-<ul>
-  <% posts.blog.forEach(function(r){ %>
-  <li><small><%= r.date %></small>  <a href='blog/<%= r.path%>'><%= r.title %></a></li>
-  <% }) %>
-</ul>
-<h2>Others</h2>
-<ul>
-  <% posts.other.forEach(function(r){ %>
-  <li><a href='other/<%= r.path%>'><%= r.title %></a></li>
-  <% }) %>
-</ul>
+<% }) %>

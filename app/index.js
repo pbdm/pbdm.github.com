@@ -7,6 +7,29 @@ var render = middlewares.ejs;
 var path = require('path');
 var Config= require('./config');
 var Util = require('./util');
+var marked = require('marked');
+var hljs = require('highlight.js');
+
+const renderer = new marked.Renderer();
+
+// for highlight code
+renderer.code = (code, lang) => {
+  let highlighted;
+  if (typeof lang === 'undefined') {
+    highlighted = hljs.highlightAuto(code).value;
+  } else if (lang === 'flow') {
+    return '<div class="flow">'+code+'</div>';
+  } else if (lang === 'seq') {
+    return '<div class="seq">'+code+'</div>';
+  } else if (lang === 'nohighlight') {
+    highlighted = code;
+  } else {
+    highlighted = hljs.highlight(lang, code).value;
+  }
+  return `<pre><code class="hljs${ lang || ''}">${highlighted}</code></pre>`;
+};
+
+marked.setOptions({ renderer });
 
 render(app, {
   root: path.join(__dirname, 'views'),
@@ -19,31 +42,23 @@ render(app, {
 // 原始数据, 供 base 用
 const data = {
   name: Config.name,
-  year: Config.year
+  year: new Date().getFullYear()
 }
 
-const postData = Util.getPostListData(Config.paths)
+const postData = Util.getPostListData(Config.postPath);
 
 router
   .get('/', function *(next) {
     data.posts = postData
-    data.page = 'home'
     yield this.render('home', data)
   })
-  .get('wiki', '/wiki/:name?', function *(next) {
-    let d = Util.getPostData(postData, 'wiki', this.params.name, data)
-    d.page = 'wiki'
-    yield this.render('post', d)
-  })
-  .get('blog', '/blog/:name?', function *(next) {
-    let d = Util.getPostData(postData, 'blog', this.params.name, data)
-    d.page ='blog'
-    yield this.render('post', d)
-  })
-  .get('other', '/other/:name?', function *(next) {
-    let d = Util.getPostData(postData, 'other', this.params.name, data)
-    d.page ='other'
-    yield this.render('post', d)
+  .get('/posts/:type/:name?', function *(next) {
+    let d = Util.getPostData(marked, postData, this.params.type, this.params.name, data)
+    if (d) {
+      yield this.render('post', d)
+    } else {
+      yield this.render('404', data)
+    }
   })
   .get('*', function *(next) {
     yield this.render('404', data)
