@@ -24,7 +24,7 @@ function parseGraph(element, index, type) {
   let diagram;
   if (type === 'mermaid') {
     loadFiles(MERMAID_PATH).then(() => {
-      mermaid.initialize({startOnLoad:true});
+      mermaid.init({noteMargin: 10}, ".mermaid");
     });
   } else if (type === 'seq') {
     loadFiles(SQUENCE_PATH).then(() => {
