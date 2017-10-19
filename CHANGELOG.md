@@ -5,6 +5,7 @@
 * `2017-10-16`将 posts 移到 submodule
 * `2017-10-17`引入 es modules, browser-sync, 移除 webpack, less, babel
 * `2017-10-19`引入[Single Page Apps for GitHub Pages](https://github.com/rafrex/spa-github-pages)
+* `2017-10-19`引入[mermaid](https://mermaidjs.github.io/)
 
 ## 7.0 gitbook
 

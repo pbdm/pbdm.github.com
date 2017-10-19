@@ -1,8 +1,8 @@
 import Post from './components/post.js';
-// import NotFound from './components/404.js';
 import Nav from './components/nav.js';
 import { isPromise } from './lib/util.js';
 
+// add history.onpushstate listener
 (function(history) {
   var pushState = history.pushState;
   history.pushState = function() {
@@ -17,12 +17,14 @@ class App {
   constructor() {
     this.BEFORE_DESTOY = 'beforeDestroy';
     this.listenList = [];
+
     const rootElement = document.getElementById('app');
     this.navElement = document.createElement('nav');
-    this.containerElement = document.createElement('div');
-    this.containerElement.classList.add('container');
+    this.mainElement = document.createElement('main');
+
     rootElement.appendChild(this.navElement);
-    rootElement.appendChild(this.containerElement);
+    rootElement.appendChild(this.mainElement);
+
     this.switcher(window.location.pathname);
     window.history.onpushstate = params => {
       this.switcher(params[2]);
@@ -30,17 +32,15 @@ class App {
     window.addEventListener('popstate', e => {
       this.switcher(window.location.pathname);
     });
-    this.renderNav();
-  }
 
-  renderNav() {
     this.render(new Nav(), this.navElement);
   }
 
   renderContainer(page) {
     this.page = page;
-    this.clean();
-    this.render(page, this.containerElement);
+    this.mainElement.innerHTML = '';
+    this.mainElement.classList.add('loading');
+    this.render(page, this.mainElement);
   }
 
   listen(key, fn) {
@@ -76,11 +76,6 @@ class App {
     }
   }
 
-  clean() {
-    this.containerElement.innerHTML = '';
-    this.containerElement.classList.add('loading');
-  }
-
   append(element, content) {
     element.innerHTML = content;
     element.classList.remove('loading');
@@ -89,7 +84,7 @@ class App {
   switcher(path) {
     this.trigger(this.BEFORE_DESTOY);
     path = path.replace('/', '');
-    let pathArray = path.split('/');
+    const pathArray = path.split('/');
     pathArray[0] = pathArray[0] || 'home';
     switch (pathArray[0]) {
       case 'home':

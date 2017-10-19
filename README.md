@@ -24,25 +24,22 @@
 - [X] 使用 [spa-github-pages](https://github.com/rafrex/spa-github-pages) 待定, 这东西过于hack, 重定向到404.html会导致http返回码不正确
   - [X] browser history
 - [X] add mermaid
-- [ ] replace trigger to setter and getter like vue
-- [ ] clean css
-- [ ] check test
-- [ ] .travis.yml(like hexo)
-- [ ] [hakimel/reveal.js](https://github.com/hakimel/reveal.js/)
+- [ ] clean css(add button for hide nav bar)
 - [ ] event listener for toc
-- [ ] queryString(select button) for hide nav bar
-- [ ] add [remark](https://github.com/gnab/remark) toggle function
+- [ ] check test
+- [ ] [hakimel/reveal.js](https://github.com/hakimel/reveal.js/) or [remark](https://github.com/gnab/remark)
 - [ ] 接入评论系统 (野狗, duoshuo, disqus)
 - [ ] 单页面应用搜索引擎
 - [ ] ~~输出RSS~~
 - [ ] Fix back to top
-- [ ] hot reload for dev
 - [ ] 支持甘特图 [gant-diagrams](https://knsv.github.io/mermaid/#gant-diagrams)
 - [ ] 使用 [core-decorators](https://github.com/jayphelps/core-decorators.js)(暂缓, decorator还在draft里)
 - [ ] 自动下载pdf, 使用 [markdown-pdf](https://www.npmjs.com/package/markdown-pdf)
 - [ ] 子组件机制?! 什么鬼....
 - [ ] change `highlight.js` to [prismjs](http://prismjs.com/)
 - [ ] [Loading a Modern Application with <script type=module>](https://matthewphillips.info/posts/loading-app-with-script-module)
+- [ ] replace trigger to setter and getter like vue(maybe)
+- [ ] .travis.yml(like hexo)
 
 ### pbdm.cc with playground
 
