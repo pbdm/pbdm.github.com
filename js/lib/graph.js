@@ -6,6 +6,10 @@ const SQUENCE_PATH = [
   '//cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js'
 ];
 
+const MERMAID_PATH = [
+  '//cdn.bootcss.com/mermaid/7.0.0/mermaid.min.js'
+]
+
 const FLOWCHART_PATH = ['//cdn.bootcss.com/flowchart/1.7.0/flowchart.min.js'];
 
 const loadFiles = function(files) {
@@ -18,7 +22,11 @@ const loadFiles = function(files) {
 
 function parseGraph(element, index, type) {
   let diagram;
-  if (type === 'seq') {
+  if (type === 'mermaid') {
+    loadFiles(MERMAID_PATH).then(() => {
+      mermaid.initialize({startOnLoad:true});
+    });
+  } else if (type === 'seq') {
     loadFiles(SQUENCE_PATH).then(() => {
       diagram = Diagram.parse(htmlDecode(element.innerHTML));
       drawGraph(element, index, type, diagram);
@@ -41,6 +49,11 @@ function drawGraph(element, index, type, diagram) {
 }
 
 export function setGraph() {
+  const mermaids = document.getElementsByClassName('mermaid');
+  Array.prototype.forEach.call(mermaids, function(element, index) {
+    parseGraph(element, index, 'mermaid');
+  });
+
   const seqs = document.getElementsByClassName('seq');
   Array.prototype.forEach.call(seqs, function(element, index) {
     parseGraph(element, index, 'seq');

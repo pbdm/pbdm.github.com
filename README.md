@@ -21,11 +21,10 @@
 - [X] change marked to markdown-it
   - [X] 链接中有空格无法解析
 - [X] remove webpack, use `<script type="module">`
-- [ ] 使用 [spa-github-pages](https://github.com/rafrex/spa-github-pages) 待定, 这东西过于hack, 重定向到404.html会导致http返回码不正确
-  - [ ] browser history
+- [X] 使用 [spa-github-pages](https://github.com/rafrex/spa-github-pages) 待定, 这东西过于hack, 重定向到404.html会导致http返回码不正确
+  - [X] browser history
+- [X] add mermaid
 - [ ] replace trigger to setter and getter like vue
-- [ ] [jekyll config](https://help.github.com/articles/files-that-start-with-an-underscore-are-missing/)
-- [ ] add mermaid
 - [ ] clean css
 - [ ] check test
 - [ ] .travis.yml(like hexo)
