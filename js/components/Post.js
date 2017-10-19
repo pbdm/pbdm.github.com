@@ -1,11 +1,10 @@
-import markdown from '../lib/markdown';
-import BasePage from './base';
-import { get } from '../lib/util';
-import { setGraph } from '../lib/graph';
-import Toc from '../lib/toc';
+import markdown from '../lib/markdown.js';
+import BasePage from './base.js';
+import { get } from '../lib/util.js';
+import { setGraph } from '../lib/graph.js';
+import Toc from '../lib/toc.js';
 
 export default class Post extends BasePage {
-
   constructor(type, file) {
     super();
     this.type = type;
@@ -13,12 +12,15 @@ export default class Post extends BasePage {
   }
 
   fetchPostDetail() {
-    return get(`/posts/${this.type}/${this.file}`)
-      .then((data) => {
+    return get(`/posts/${this.type}/${this.file}`).then(data => {
+      if (data.indexOf('<!DOCTYPE html>') === 0) {
+        return '404';
+      } else {
         return `
-          ${markdown.render(data)}
-        `
-      });
+            ${markdown.render(data)}
+          `;
+      }
+    });
   }
 
   created() {
@@ -35,4 +37,3 @@ export default class Post extends BasePage {
     this.toc.removeToc();
   }
 }
-

@@ -1,44 +1,31 @@
-import BasePage from './base';
+import BasePage from './base.js';
+import markdown from '../lib/markdown.js';
+import { get } from '../lib/util.js';
 
 export default class Header extends BasePage {
-
   constructor() {
     super();
-    this.header = `
-      <div class='header'>
-        <a href="#"><img class='avatar' src='/img/touch-icon.png' alt="pb" /></a>
-        <a class='name' href="http://gravatar.com/pbdm915">琥珀草</a>
-      </div>
-    `;
-  }
-
-  renderList(key, data) {
-    let template = '';
-    const files = data.files;
-    if (files) {
-      template = `<div class='title'>${key}</div>`;
-      files.map ((value)=> {
-        template += `<li><a href='#${decodeURIComponent(value.fullpath)}'>${value.title}</a></li>`
-      });
-    }
-    return template;
   }
 
   fetchPostList() {
     let template = '';
-    template += this.header;
-    Object.keys(posts).reverse().map((key)=> {
-        template += `<div class='post-list'>
-          ${this.renderList(key, posts[key])}
-        </div>`
+    return get(`/posts/SUMMARY.md`).then(data => {
+      template += markdown.render(data);
+      return template;
     });
-    return template;
   }
-    
+
+  mounted(element) {
+    element.addEventListener('click', e => {
+      const target = e.target;
+      if (target.tagName === 'A') {
+        e.preventDefault();
+        window.history.pushState(null, null, target.getAttribute('href'));
+      }
+    });
+  }
+
   created() {
     return Promise.resolve(this.fetchPostList());
   }
-
 }
-
-

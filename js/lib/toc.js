@@ -1,4 +1,4 @@
-import { delHtmlTag, getScrollingElement } from './util';
+import { delHtmlTag, getScrollingElement } from './util.js';
 
 // TODO add test code;
 

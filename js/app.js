@@ -1,22 +1,34 @@
-import '../css/style.less';
-import Post from './components/Post';
-import NotFound from './components/404';
-import Nav from './components/nav';
-import { isPromise } from './lib/util';
+import Post from './components/post.js';
+// import NotFound from './components/404.js';
+import Nav from './components/nav.js';
+import { isPromise } from './lib/util.js';
+
+(function(history) {
+  var pushState = history.pushState;
+  history.pushState = function() {
+    if (typeof history.onpushstate === 'function') {
+      history.onpushstate(arguments);
+    }
+    return pushState.apply(history, arguments);
+  };
+})(window.history);
 
 class App {
   constructor() {
     this.BEFORE_DESTOY = 'beforeDestroy';
     this.listenList = [];
     const rootElement = document.getElementById('app');
-    this.navElement = document.createElement('nav')
+    this.navElement = document.createElement('nav');
     this.containerElement = document.createElement('div');
     this.containerElement.classList.add('container');
     rootElement.appendChild(this.navElement);
     rootElement.appendChild(this.containerElement);
-    this.switcher(window.location.hash);
-    window.addEventListener('hashchange', () => {
-      this.switcher(window.location.hash);
+    this.switcher(window.location.pathname);
+    window.history.onpushstate = params => {
+      this.switcher(params[2]);
+    };
+    window.addEventListener('popstate', e => {
+      this.switcher(window.location.pathname);
     });
     this.renderNav();
   }
@@ -41,7 +53,7 @@ class App {
   trigger() {
     const key = Array.prototype.shift.call(arguments);
     const fns = this.listenList[key];
-    if (fns && fns.length !==0) {
+    if (fns && fns.length !== 0) {
       for (let i = 0; i < fns.length; i++) {
         fns[i].apply(this.page, arguments);
       }
@@ -52,9 +64,9 @@ class App {
   render(page, element) {
     const pageValue = page.created();
     if (isPromise(pageValue)) {
-      return pageValue.then((data) => {
+      return pageValue.then(data => {
         this.append(element, data);
-        this.listen(this.BEFORE_DESTOY, page[this.BEFORE_DESTOY])
+        this.listen(this.BEFORE_DESTOY, page[this.BEFORE_DESTOY]);
         page.mounted && page.mounted(element);
         return true;
       });
@@ -74,24 +86,21 @@ class App {
     element.classList.remove('loading');
   }
 
-  switcher(hash) {
+  switcher(path) {
     this.trigger(this.BEFORE_DESTOY);
-    hash = hash.replace("#", "");
-    let hashArray = hash.split('/');
-    hashArray[0] = hashArray[0] || 'home';
-    switch (hashArray[0]) {
+    path = path.replace('/', '');
+    let pathArray = path.split('/');
+    pathArray[0] = pathArray[0] || 'home';
+    switch (pathArray[0]) {
       case 'home':
-        this.renderContainer(new Post('', '2017-03-08-intro.md'));
-        break;
-      case 'posts':
-        if (hashArray[2]) {
-          this.renderContainer(new Post(hashArray[1], hashArray[2]));
-        } else {
-          this.renderContainer(new Post('', hashArray[1]));
-        }
+        this.renderContainer(new Post('', 'INTRO.md'));
         break;
       default:
-        this.renderContainer(new NotFound());
+        if (pathArray[1]) {
+          this.renderContainer(new Post(pathArray[0], pathArray[1]));
+        } else {
+          this.renderContainer(new Post('', pathArray[0]));
+        }
     }
   }
 }
