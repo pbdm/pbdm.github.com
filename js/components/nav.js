@@ -17,6 +17,7 @@ export default class Header extends BasePage {
 
   mounted(element) {
     element.addEventListener('click', e => {
+      debugger
       const target = e.target;
       if (target.tagName === 'A') {
         e.preventDefault();

@@ -32,12 +32,17 @@ class App {
       }
     })
 
-    this.switcher(window.location.pathname);
+    this.currentPathname = window.location.pathname;
+
+    this.switcher(this.currentPathname);
     window.history.onpushstate = params => {
       this.switcher(params[2]);
     };
     window.addEventListener('popstate', e => {
-      this.switcher(window.location.pathname);
+      // 防止 hash 跳转触发的渲染
+      if (this.currentPathname !== window.location.pathname) {
+        this.switcher(window.location.pathname);
+      }
     });
 
     this.render(new Nav(), this.navElement);

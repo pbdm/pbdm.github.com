@@ -24,8 +24,9 @@
 - [X] 使用 [spa-github-pages](https://github.com/rafrex/spa-github-pages) 待定, 这东西过于hack, 重定向到404.html会导致http返回码不正确
   - [X] browser history
 - [X] add mermaid
-- [ ] clean css(add button for hide nav bar)
-- [ ] event listener for toc
+- [X] clean css(add button for hide nav bar)
+- [X] fix toc
+  - [ ] [anchor scroll](https://meixg.cn/2017/05/24/vue-anchor-scroll/)
 - [ ] check test
 - [ ] [hakimel/reveal.js](https://github.com/hakimel/reveal.js/) or [remark](https://github.com/gnab/remark)
 - [ ] 接入评论系统 (野狗, duoshuo, disqus)

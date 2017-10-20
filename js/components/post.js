@@ -29,8 +29,9 @@ export default class Post extends BasePage {
 
   mounted(element) {
     setGraph();
-    // TODO init toc in constructor?
+    // TODO init toc in constructor or after onload(image size problem)?
     this.toc = new Toc(element);
+    this.toc.scrollToAnchor();
   }
 
   beforeDestroy() {

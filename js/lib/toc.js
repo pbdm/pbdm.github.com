@@ -2,10 +2,10 @@ import { delHtmlTag, getScrollingElement } from './util.js';
 
 // TODO add test code;
 
-export default class Toc { 
+export default class Toc {
   constructor(rootElement, headers, parentClass) {
     this.rootElement = rootElement;
-    this.headers = headers || 'h1, h2, h3, h4';
+    this.headers = headers || 'h2, h3, h4, h5';
     this.parentClass = parentClass || 'toc';
     this.rootClassName = 'has-toc';
     this.listen = this.listen.bind(this);
@@ -35,10 +35,14 @@ export default class Toc {
       this.rootElement.classList.add(this.rootClassName);
       for (let childDom of childDoms) {
         // recode list position
-        this.scrollArray.push(childDom.offsetTop)
+        this.scrollArray.push(childDom.offsetTop);
         let tempDom = document.createElement('li');
-        tempDom.innerHTML = delHtmlTag(childDom.innerHTML);
-        tempDom.classList.add(`${this.parentClass}-${childDom.tagName.toLowerCase()}`);
+        const name = delHtmlTag(childDom.innerHTML); 
+        const inner = `<a href="#${name}">${name}</a>`
+        tempDom.innerHTML = inner
+        tempDom.classList.add(
+          `${this.parentClass}-${childDom.tagName.toLowerCase()}`
+        );
         this.tocContent.appendChild(tempDom);
       }
       this.rootElement.appendChild(this.tocContent);
@@ -54,16 +58,24 @@ export default class Toc {
   listen() {
     const tocList = this.tocContent.getElementsByTagName('li');
     const scrollArray = this.scrollArray;
-    let top = getScrollingElement().scrollTop + scrollArray[0] + 10;
+    let top = getScrollingElement().scrollTop + 10;
     scrollArray.forEach((value, i) => {
-      if ((top > scrollArray[i] && top <= scrollArray[i+1]) ||
+      if (
+        (top > scrollArray[i] && top <= scrollArray[i + 1]) ||
         (i === tocList.length - 1 && top > scrollArray[i]) // for the last one
       ) {
         tocList[i].classList.add('on');
       } else {
         tocList[i].classList.remove('on');
       }
-    })
+    });
+  }
+
+  scrollToAnchor() {
+    const hash = window.location.hash.replace('#', '');
+    const hashDom = document.getElementById(hash);
+    if (hashDom) {
+      getScrollingElement().scrollTo(0, hashDom.offsetTop);
+    }
   }
 }
-

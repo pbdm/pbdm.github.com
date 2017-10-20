@@ -40,6 +40,7 @@ nav {
   width: 20vw;
   overflow-y: auto;
   list-style: none;
+  transition: transform 250ms ease;
 }
 nav h1 {
   font-size: 1rem;
@@ -67,11 +68,12 @@ nav ul li p {
   padding: 1rem 2rem;
   box-sizing: border-box;
   min-height: 90vh;
+  transition: transform 250ms ease;
 }
-.container .seq {
+main .seq {
   overflow-x: auto;
 }
-.container.has-toc {
+main.has-toc {
   margin-right: 20vw;
 }
 
@@ -103,6 +105,7 @@ nav ul li p {
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 0;
+  margin-left: -10px;
 }
 .toc .toc-h1 {
   padding-left: 10px;
@@ -116,8 +119,11 @@ nav ul li p {
 .toc .toc-h4 {
   padding-left: 55px;
 }
-.toc .on {
+.toc .on a {
   color: #1abc9c;
+}
+.toc a {
+  color: #bababa;
 }
 
 .loading {
@@ -127,7 +133,6 @@ nav ul li p {
 }
 
 .hamburger {
-  display: none;
   position: relative;
   font-size: 10px;
   width: 3.3em;
@@ -158,6 +163,13 @@ nav ul li p {
   border-radius: 0.1em;
 }
 
+.menu nav {
+  transform: translateX(-22vw); 
+}
+.menu .container {
+  margin-left: 0;
+}
+
 @media (max-width: 768px) {
   .menu nav {
     transform: translateX(0); 
@@ -168,17 +180,12 @@ nav ul li p {
   nav {
     width: 80vw;
     transform: translateX(-80vw);
-    transition: transform 250ms ease;
   }
   .toc {
     display: none;
   }
   .container {
     margin-left: 0;
-    transition: transform 250ms ease;
-  }
-  .hamburger { 
-    display: block;
   }
 }
 

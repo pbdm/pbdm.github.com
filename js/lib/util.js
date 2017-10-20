@@ -46,11 +46,12 @@ export function b64_to_utf8(str) {
 // TODO use document.scrollingElement?
 // https://github.com/mathiasbynens/document.scrollingElement
 export function getScrollingElement() {
-  let d = document;
-  return d.documentElement.scrollHeight > d.body.scrollHeight &&
-    d.compatMode.indexOf('CSS1') === 0 ?
-    d.documentElement :
-    d.body;
+  return window.document.scrollingElement
+  // let d = document;
+  // return d.documentElement.scrollHeight > d.body.scrollHeight &&
+  //   d.compatMode.indexOf('CSS1') === 0 ?
+  //   d.documentElement :
+  //   d.body;
 }
 
 export function delHtmlTag(str) {

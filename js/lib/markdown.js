@@ -1,4 +1,6 @@
 import replaceLink from './markdown-it-replace-link.js';
+import anchor from './markdown-it-anchor.js';
+
 const md = markdownit({
   html: true,
   replaceLink: function(link) {
@@ -20,6 +22,6 @@ const md = markdownit({
       return `<pre><code class="hljs">${highlighted}</code></pre>`;
     }
   }
-}).use(replaceLink);
+}).use(replaceLink).use(anchor);
 
 export default md;
