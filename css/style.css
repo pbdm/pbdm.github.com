@@ -1,5 +1,6 @@
 html {
-  font-family: 'XinGothic', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Droid Sans', 'Hei SC', 'Microsoft Yahei', sans-serif;
+  font-family: 'XinGothic', 'Hiragino Sans GB', 'WenQuanYi Micro Hei',
+    'Droid Sans', 'Hei SC', 'Microsoft Yahei', sans-serif;
   line-height: 1.5;
   min-height: 100%;
 }
@@ -61,16 +62,16 @@ nav ul li p {
   margin: 0;
 }
 
-main {
+.container {
   margin-left: 20vw;
-  padding: 2rem;
+  padding: 1rem 2rem;
   box-sizing: border-box;
   min-height: 90vh;
 }
-main .seq {
+.container .seq {
   overflow-x: auto;
 }
-main.has-toc {
+.container.has-toc {
   margin-right: 20vw;
 }
 
@@ -125,11 +126,59 @@ main.has-toc {
   background-position: 50%;
 }
 
+.hamburger {
+  display: none;
+  position: relative;
+  font-size: 10px;
+  width: 3.3em;
+  height: 3.3em;
+  border-radius: 0.3em;
+}
+.hamburger:before {
+  border-top: 0.3em solid #444;
+  content: '';
+  position: absolute;
+  width: 1.9em;
+  height: 1em;
+  margin: auto;
+  border-bottom: 0.3em solid #444;
+  top: 1em;
+  left: 0.7em;
+  border-radius: 0.1em;
+}
+.hamburger:after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 1.6em;
+  width: 1.9em;
+  height: 0.3em;
+  background: #444;
+  left: 0.7em;
+  border-radius: 0.1em;
+}
+
 @media (max-width: 768px) {
-  nav {
-    display: none; 
+  .menu nav {
+    transform: translateX(0); 
   }
-  main {
-    margin-left: 0; 
+  .menu .container {
+    transform: translateX(80vw); 
+  }
+  nav {
+    width: 80vw;
+    transform: translateX(-80vw);
+    transition: transform 250ms ease;
+  }
+  .toc {
+    display: none;
+  }
+  .container {
+    margin-left: 0;
+    transition: transform 250ms ease;
+  }
+  .hamburger { 
+    display: block;
   }
 }
+

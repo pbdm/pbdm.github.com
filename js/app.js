@@ -18,12 +18,19 @@ class App {
     this.BEFORE_DESTOY = 'beforeDestroy';
     this.listenList = [];
 
-    const rootElement = document.getElementById('app');
-    this.navElement = document.createElement('nav');
-    this.mainElement = document.createElement('main');
+    this.navElement = document.getElementsByTagName('nav')[0];
+    this.mainElement = document.getElementsByTagName('main')[0];
 
-    rootElement.appendChild(this.navElement);
-    rootElement.appendChild(this.mainElement);
+    this.hamburger = document.getElementsByClassName('hamburger')[0];
+    this.hamburger.addEventListener('click', () => {
+      const toggleClass = 'menu'
+      const body = document.body;
+      if (body.classList[0] === toggleClass) {
+        body.classList.remove(toggleClass);
+      } else {
+        body.classList.add(toggleClass);
+      }
+    })
 
     this.switcher(window.location.pathname);
     window.history.onpushstate = params => {
