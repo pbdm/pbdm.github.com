@@ -25,15 +25,13 @@
   - [X] browser history
 - [X] add mermaid
 - [X] clean css(add button for hide nav bar)
-- [X] fix toc
-  - [ ] [anchor scroll](https://meixg.cn/2017/05/24/vue-anchor-scroll/)
+- [X] fix toc and add anchor
+- [X] 支持甘特图 [gant-diagrams](https://knsv.github.io/mermaid/#gant-diagrams)
 - [ ] check test
 - [ ] [hakimel/reveal.js](https://github.com/hakimel/reveal.js/) or [remark](https://github.com/gnab/remark)
 - [ ] 接入评论系统 (野狗, duoshuo, disqus)
 - [ ] 单页面应用搜索引擎
 - [ ] ~~输出RSS~~
-- [ ] Fix back to top
-- [ ] 支持甘特图 [gant-diagrams](https://knsv.github.io/mermaid/#gant-diagrams)
 - [ ] 使用 [core-decorators](https://github.com/jayphelps/core-decorators.js)(暂缓, decorator还在draft里)
 - [ ] 自动下载pdf, 使用 [markdown-pdf](https://www.npmjs.com/package/markdown-pdf)
 - [ ] 子组件机制?! 什么鬼....
