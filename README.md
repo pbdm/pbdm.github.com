@@ -34,7 +34,7 @@
 
 ### pbdm.cc with playground
 
-- [ ] add playground browser
+- [ ] add playground browser(begin from bfc)
 - [ ] add other playground
 
 ### server side version(branch develop)

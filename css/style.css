@@ -181,6 +181,9 @@ main.has-toc {
     width: 80vw;
     transform: translateX(-80vw);
   }
+  main.has-toc {
+    margin-right: 0;
+  }
   .toc {
     display: none;
   }
