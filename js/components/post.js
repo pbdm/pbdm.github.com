@@ -8,7 +8,7 @@ export default class Post extends BasePage {
   constructor(type, file) {
     super();
     this.type = type;
-    this.file = file;
+    this.file = file.replace('.html', '.md');
   }
 
   fetchPostDetail() {

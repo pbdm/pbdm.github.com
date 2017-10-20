@@ -8,14 +8,6 @@
 
 [PBDm](http://pbdm.cc)'s personal site
 
-## Start
-
-`npm install`
-
-`npm run start` to run and test
-
-`npm run build` to build
-
 ## TODO
 
 - [X] change marked to markdown-it
@@ -27,8 +19,8 @@
 - [X] clean css(add button for hide nav bar)
 - [X] fix toc and add anchor
 - [X] 支持甘特图 [gant-diagrams](https://knsv.github.io/mermaid/#gant-diagrams)
-- [ ] check test
 - [ ] [hakimel/reveal.js](https://github.com/hakimel/reveal.js/) or [remark](https://github.com/gnab/remark)
+- [ ] check test
 - [ ] 接入评论系统 (野狗, duoshuo, disqus)
 - [ ] 单页面应用搜索引擎
 - [ ] ~~输出RSS~~
@@ -47,8 +39,7 @@
 
 ### server side version(branch develop)
 
-- [ ] 使用 [pageAccelerator](pageAccelerator)(pjax)
 - [ ] webhook from github
 - [ ] [nginx配置优化](http://imququ.com/post/my-nginx-conf-for-wpo.html)
 - [ ] websocket, 参考 [barretlee](https://github.com/barretlee/blogChat/blob/master/index.js)
-- [ ] https, http2
+- [ ] https/http2

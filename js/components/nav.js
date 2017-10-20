@@ -20,7 +20,7 @@ export default class Header extends BasePage {
       const target = e.target;
       if (target.tagName === 'A') {
         e.preventDefault();
-        window.history.pushState(null, null, target.getAttribute('href'));
+        window.history.pushState(null, null, target.getAttribute('href').replace('.md', '.html'));
       }
     });
   }
