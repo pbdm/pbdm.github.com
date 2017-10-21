@@ -133,6 +133,7 @@ main.has-toc {
 }
 
 .hamburger {
+  cursor: pointer;
   position: relative;
   font-size: 10px;
   width: 3.3em;
@@ -179,7 +180,7 @@ main.has-toc {
   }
   nav {
     width: 80vw;
-    transform: translateX(-80vw);
+    transform: translateX(-85vw);
   }
   main.has-toc {
     margin-right: 0;

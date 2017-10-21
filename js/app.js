@@ -94,6 +94,7 @@ class App {
   }
 
   switcher(path) {
+    this.currentPathname = path;
     this.trigger(this.BEFORE_DESTOY);
     path = path.replace('/', '');
     const pathArray = path.split('/');
