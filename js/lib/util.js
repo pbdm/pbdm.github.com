@@ -70,7 +70,8 @@ function getSingle(fn) {
 }
 
 // TODO add more attribute support
-function loadjscssfile(filename, filetype = 'js') {
+function loadjscssfile(filename, filetype) {
+  filetype = filetype || filename.split('.').pop();
 	return new Promise((resolve, reject) => {
     let fileref;
     if (filetype === "js") {
@@ -91,7 +92,7 @@ function loadjscssfile(filename, filetype = 'js') {
 
 const loadFileOnce = getSingle(loadjscssfile);
 
-export function loadFile(filename, filetype = 'js', once) {
+export function loadFile(filename, filetype, once) {
   arguments.length = arguments.length - 1;
   if (once) {
     return loadFileOnce.apply(this, arguments);

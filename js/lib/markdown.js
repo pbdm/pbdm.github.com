@@ -1,5 +1,6 @@
 import replaceLink from './markdown-it-replace-link.js';
 import anchor from './markdown-it-anchor.js';
+import taskList from './markdown-it-task-lists.js';
 
 const md = markdownit({
   html: true,
@@ -22,6 +23,6 @@ const md = markdownit({
       return `<pre><code class="hljs">${highlighted}</code></pre>`;
     }
   }
-}).use(replaceLink).use(anchor);
+}).use(replaceLink).use(anchor).use(taskList);
 
 export default md;

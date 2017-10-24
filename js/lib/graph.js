@@ -7,7 +7,8 @@ const SQUENCE_PATH = [
 ];
 
 const MERMAID_PATH = [
-  '//cdn.bootcss.com/mermaid/7.0.0/mermaid.min.js'
+  '//cdn.bootcss.com/mermaid/7.0.0/mermaid.min.js',
+  '//cdn.bootcss.com/mermaid/7.0.0/mermaid.forest.min.css'
 ]
 
 const FLOWCHART_PATH = ['//cdn.bootcss.com/flowchart/1.7.0/flowchart.min.js'];
@@ -15,7 +16,7 @@ const FLOWCHART_PATH = ['//cdn.bootcss.com/flowchart/1.7.0/flowchart.min.js'];
 const loadFiles = function(files) {
   return files.reduce((sequence, file) => {
     return sequence.then(function() {
-      return loadFile(file, 'js', true);
+      return loadFile(file, undefined, true);
     });
   }, Promise.resolve());
 };
