@@ -19,7 +19,11 @@
 - [X] clean css(add button for hide nav bar)
 - [X] fix toc and add anchor
 - [X] 支持甘特图 [gant-diagrams](https://knsv.github.io/mermaid/#gant-diagrams)
+- [ ] promise to async await
+  - [ ] loadjscssfile
 - [ ] [hakimel/reveal.js](https://github.com/hakimel/reveal.js/) or [remark](https://github.com/gnab/remark)
+  - [ ] write it myself with markdown-it
+- [ ] URLSearchParams
 - [ ] 单击图片放大功能
 - [ ] check test
 - [ ] 接入评论系统 (野狗, duoshuo, disqus)

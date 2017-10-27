@@ -11,16 +11,19 @@ export default class Post extends BasePage {
     this.file = file.replace('.html', '.md');
   }
 
-  fetchPostDetail() {
-    return get(`/posts/${this.type}/${this.file}`).then(data => {
-      if (data.indexOf('<!DOCTYPE html>') === 0) {
-        return '404';
+  async fetchPostDetail() {
+    const data = await get(`/posts/${this.type}/${this.file}`);
+    if (data.indexOf('<!DOCTYPE html>') === 0) {
+      return '404';
+    } else {
+      if (data.indexOf('name') === 0) {
+        return '';
       } else {
         return `
             ${markdown.render(data)}
           `;
       }
-    });
+    }
   }
 
   created() {

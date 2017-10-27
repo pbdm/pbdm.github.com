@@ -1,17 +1,5 @@
 import { htmlDecode, loadFile } from './util.js';
-
-const SQUENCE_PATH = [
-  '//cdn.bootcss.com/underscore.js/1.8.3/underscore-min.js',
-  '//cdn.bootcss.com/raphael/2.2.1/raphael.min.js',
-  '//cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js'
-];
-
-const MERMAID_PATH = [
-  '//cdn.bootcss.com/mermaid/7.0.0/mermaid.min.js',
-  '//cdn.bootcss.com/mermaid/7.0.0/mermaid.forest.min.css'
-]
-
-const FLOWCHART_PATH = ['//cdn.bootcss.com/flowchart/1.7.0/flowchart.min.js'];
+import { SQUENCE_PATH, MERMAID_PATH, FLOWCHART_PATH } from '../config.js';
 
 const loadFiles = function(files) {
   return files.reduce((sequence, file) => {

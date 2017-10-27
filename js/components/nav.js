@@ -7,12 +7,9 @@ export default class Header extends BasePage {
     super();
   }
 
-  fetchPostList() {
-    let template = '';
-    return get(`/posts/SUMMARY.md`).then(data => {
-      template += markdown.render(data);
-      return template;
-    });
+  async fetchPostList() {
+    const data = await get(`/posts/SUMMARY.md`);
+    return markdown.render(data); 
   }
 
   mounted(element) {
@@ -26,6 +23,6 @@ export default class Header extends BasePage {
   }
 
   created() {
-    return Promise.resolve(this.fetchPostList());
+    return this.fetchPostList();
   }
 }

@@ -11,31 +11,9 @@ export function htmlDecode(input) {
   return e.childNodes[0].nodeValue;
 }
 
-export function get(url) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    var jsonValidate = function(str) {
-      try {
-        JSON.parse(str);
-        return true;
-      } catch (err) {
-        return false;
-      }
-    };
-    xhr.onload = function() {
-      if (xhr.status >= 200 && xhr.status < 400) {
-        const response = jsonValidate(xhr.response) ? JSON.parse(xhr.response) : xhr.response;
-        return resolve(response);
-      } else {
-        return reject('error');
-      }
-    };
-    xhr.onerror = function() {
-      return reject('error');
-    };
-    xhr.send();
-  })
+export async function get(url) {
+  let response = await fetch(url);
+  return await response.text();
 }
 
 export function b64_to_utf8(str) {
