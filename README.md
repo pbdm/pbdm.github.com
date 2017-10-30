@@ -21,8 +21,8 @@
 - [X] 支持甘特图 [gant-diagrams](https://knsv.github.io/mermaid/#gant-diagrams)
 - [X] promise with async await
 - [ ] add playgrounds
-  - [ ] add playground browser(begin from bfc)
-  - [ ] add other playground
+  - [X] add playground browser
+  - [ ] add other playground(begin from promises)
 - [ ] [hakimel/reveal.js](https://github.com/hakimel/reveal.js/) or [remark](https://github.com/gnab/remark)
   - [ ] write it myself with markdown-it
 - [ ] URLSearchParams
