@@ -23,8 +23,6 @@
 - [ ] add playgrounds
   - [X] add playground browser
   - [ ] add other playground(begin from promises)
-- [ ] [hakimel/reveal.js](https://github.com/hakimel/reveal.js/) or [remark](https://github.com/gnab/remark)
-  - [ ] write it myself with markdown-it
 - [ ] URLSearchParams
 - [ ] 单击图片放大功能
 - [ ] check test
@@ -38,6 +36,8 @@
 - [ ] [Loading a Modern Application with <script type=module>](https://matthewphillips.info/posts/loading-app-with-script-module)
 - [ ] replace trigger to setter and getter like vue(maybe)
 - [ ] .travis.yml(like hexo)
+- [ ] ~~[hakimel/reveal.js](https://github.com/hakimel/reveal.js/) or [remark](https://github.com/gnab/remark)~~
+  - [ ] ~~write it myself with markdown-it~~
 
 ### server side version(branch develop)
 
