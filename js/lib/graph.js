@@ -1,31 +1,26 @@
 import { htmlDecode, loadFile } from './util.js';
 import { SQUENCE_PATH, MERMAID_PATH, FLOWCHART_PATH } from '../config.js';
 
-const loadFiles = function(files) {
-  return files.reduce((sequence, file) => {
-    return sequence.then(function() {
-      return loadFile(file, undefined, true);
-    });
-  }, Promise.resolve());
+const loadFiles = async function(files) {
+  // can't use forEach here!!
+  for (let file of files) {
+    await loadFile(file, undefined, true);
+  }
 };
 
-function parseGraph(element, index, type) {
+async function parseGraph(element, index, type) {
   let diagram;
   if (type === 'mermaid') {
-    loadFiles(MERMAID_PATH).then(() => {
-      mermaid.init({noteMargin: 10}, ".mermaid");
-    });
+    await loadFiles(MERMAID_PATH);
+    mermaid.init({ noteMargin: 10 }, '.mermaid');
   } else if (type === 'seq') {
-    loadFiles(SQUENCE_PATH).then(() => {
-      diagram = Diagram.parse(htmlDecode(element.innerHTML));
-      drawGraph(element, index, type, diagram);
-    });
+    await loadFiles(SQUENCE_PATH);
+    diagram = Diagram.parse(htmlDecode(element.innerHTML));
+    drawGraph(element, index, type, diagram);
   } else {
-    // flow
-    loadFiles(FLOWCHART_PATH).then(() => {
-      diagram = flowchart.parse(htmlDecode(element.innerHTML));
-      drawGraph(element, index, type, diagram);
-    });
+    await loadFiles(FLOWCHART_PATH);
+    diagram = flowchart.parse(htmlDecode(element.innerHTML));
+    drawGraph(element, index, type, diagram);
   }
 }
 
@@ -38,18 +33,10 @@ function drawGraph(element, index, type, diagram) {
 }
 
 export function setGraph() {
-  const mermaids = document.getElementsByClassName('mermaid');
-  Array.prototype.forEach.call(mermaids, function(element, index) {
-    parseGraph(element, index, 'mermaid');
-  });
-
-  const seqs = document.getElementsByClassName('seq');
-  Array.prototype.forEach.call(seqs, function(element, index) {
-    parseGraph(element, index, 'seq');
-  });
-
-  const flows = document.getElementsByClassName('flow');
-  Array.prototype.forEach.call(flows, function(element, index) {
-    parseGraph(element, index, 'flow');
-  });
+  ['mermaid', 'seq', 'flow'].forEach((type) => {
+    const dom = document.getElementsByClassName(type);
+    Array.prototype.forEach.call(dom, function(element, index) {
+      parseGraph(element, index, type);
+    });
+  })
 }

@@ -73,19 +73,15 @@ class App {
     }
   }
 
-  render(page, element) {
+  async render(page, element) {
     const pageValue = page.created();
     if (isPromise(pageValue)) {
-      return pageValue.then(data => {
-        this.append(element, data);
-        this.listen(this.BEFORE_DESTOY, page[this.BEFORE_DESTOY]);
-        page.mounted && page.mounted(element);
-        return true;
-      });
+      this.append(element, await pageValue);
     } else {
       this.append(element, pageValue);
-      return true;
     }
+    this.listen(this.BEFORE_DESTOY, page[this.BEFORE_DESTOY]);
+    page.mounted(element);
   }
 
   append(element, content) {
