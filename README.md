@@ -19,8 +19,10 @@
 - [X] clean css(add button for hide nav bar)
 - [X] fix toc and add anchor
 - [X] 支持甘特图 [gant-diagrams](https://knsv.github.io/mermaid/#gant-diagrams)
-- [ ] promise to async await
-  - [ ] loadjscssfile
+- [X] promise with async await
+- [ ] add playgrounds
+  - [ ] add playground browser(begin from bfc)
+  - [ ] add other playground
 - [ ] [hakimel/reveal.js](https://github.com/hakimel/reveal.js/) or [remark](https://github.com/gnab/remark)
   - [ ] write it myself with markdown-it
 - [ ] URLSearchParams
@@ -36,11 +38,6 @@
 - [ ] [Loading a Modern Application with <script type=module>](https://matthewphillips.info/posts/loading-app-with-script-module)
 - [ ] replace trigger to setter and getter like vue(maybe)
 - [ ] .travis.yml(like hexo)
-
-### pbdm.cc with playground
-
-- [ ] add playground browser(begin from bfc)
-- [ ] add other playground
 
 ### server side version(branch develop)
 

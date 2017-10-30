@@ -11,6 +11,7 @@ browserSync.init(
     server: {
       baseDir: './'
     },
+    directory : true,
     notify: false
   },
   (err, bs) => {

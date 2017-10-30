@@ -94,9 +94,9 @@ class App {
     this.trigger(this.BEFORE_DESTOY);
     path = path.replace('/', '');
     const pathArray = path.split('/');
-    pathArray[0] = pathArray[0] || 'home';
+    pathArray[0] = pathArray[0] || 'index.html';
     switch (pathArray[0]) {
-      case 'home':
+      case 'index.html':
         this.renderContainer(new Post('', 'INTRO.md'));
         break;
       default:
