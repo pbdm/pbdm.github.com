@@ -9,6 +9,7 @@ var app = new Vue({
   }
 });
 
+/*
 var app2 = new Vue({
   el: '#app-2',
   data: {
@@ -67,3 +68,5 @@ var app7 = new Vue({
     ]
   }
 });
+
+*/
