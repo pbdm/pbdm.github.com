@@ -127,11 +127,11 @@ main.has-toc {
   color: #bababa;
 }
 
-.loading {
+/* .loading {
   background-image: url('https://assets-cdn.github.com/images/spinners/octocat-spinner-128.gif');
   background-repeat: no-repeat;
   background-position: 50%;
-}
+} */
 
 .hamburger {
   cursor: pointer;
