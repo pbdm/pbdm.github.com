@@ -20,13 +20,11 @@
 - [X] fix toc and add anchor
 - [X] 支持甘特图 [gant-diagrams](https://knsv.github.io/mermaid/#gant-diagrams)
 - [X] promise with async await
-- [ ] add playgrounds
-  - [X] add playground browser
-  - [ ] add other playground(begin from promises)
+- [ ] add servers worker
+- [ ] 接入评论系统 (野狗, duoshuo, disqus)
 - [ ] URLSearchParams
 - [ ] 单击图片放大功能
 - [ ] check test
-- [ ] 接入评论系统 (野狗, duoshuo, disqus)
 - [ ] 单页面应用搜索引擎
 - [ ] ~~输出RSS~~
 - [ ] 使用 [core-decorators](https://github.com/jayphelps/core-decorators.js)(暂缓, decorator还在draft里)
@@ -36,6 +34,9 @@
 - [ ] [Loading a Modern Application with <script type=module>](https://matthewphillips.info/posts/loading-app-with-script-module)
 - [ ] replace trigger to setter and getter like vue(maybe)
 - [ ] .travis.yml(like hexo)
+- [ ] add playgrounds
+  - [X] add playground browser
+  - [ ] add other playground(begin from promises)
 - [ ] ~~[hakimel/reveal.js](https://github.com/hakimel/reveal.js/) or [remark](https://github.com/gnab/remark)~~
   - [ ] ~~write it myself with markdown-it~~
 
