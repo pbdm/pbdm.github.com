@@ -1,3 +1,6 @@
 [submodule "posts"]
 	path = posts
 	url = https://github.com/pbdm/posts.git
+[submodule "playground"]
+	path = playground
+	url = https://github.com/pbdm/playground.git
