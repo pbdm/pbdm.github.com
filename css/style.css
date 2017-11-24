@@ -1,8 +1,10 @@
 html {
   font-family: 'XinGothic', 'Hiragino Sans GB', 'WenQuanYi Micro Hei',
     'Droid Sans', 'Hei SC', 'Microsoft Yahei', sans-serif;
-  line-height: 1.5;
+  /* font-family: Source Sans Pro,Helvetica Neue,Arial,sans-serif; */
+  /* line-height: 1.5; */
   min-height: 100%;
+  -webkit-font-smoothing: antialiased;
 }
 body {
   margin: 0;
@@ -192,5 +194,18 @@ main.has-toc {
   .container {
     margin-left: 0;
   }
+}
+
+h3 {
+  position: relative;
+  margin-left: 1rem;
+}
+
+h3:before {
+  content: "#";
+  color: #1abc9c;
+  position: absolute;
+  left: -1rem;
+  font-weight: 700;
 }
 
