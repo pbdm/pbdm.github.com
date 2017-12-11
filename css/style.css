@@ -18,13 +18,17 @@ a:hover {
   letter-spacing: 0.02rem;
 }
 code {
-  padding: 0;
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
+  padding: 0.2em 0.4em;
   margin: 0;
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(27,31,35,0.05);
   border-radius: 3px;
+  color: #e96900; 
 }
+/* reset */
+pre code {
+  padding: 0;
+}
+
 img {
   max-width: 100%;
 }
