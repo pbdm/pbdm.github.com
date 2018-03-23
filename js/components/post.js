@@ -12,7 +12,13 @@ export default class Post extends BasePage {
   }
 
   async fetchPostDetail() {
-    const data = await get(`/posts/${this.type}/${this.file}`);
+    let link;
+    if (this.type === 'others'){
+      link = `/${this.type}/${this.file}`
+    } else {
+      link = `/posts/${this.type}/${this.file}` 
+    }
+    const data = await get(link);
     if (data.indexOf('<!DOCTYPE html>') === 0) {
       return '404';
     } else {
