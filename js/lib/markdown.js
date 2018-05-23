@@ -12,7 +12,7 @@ const md = markdownit({
     }
   },
   highlight: function(code, lang) {
-    const highlighted = hljs.highlightAuto(code).value;
+    // const highlighted = hljs.highlightAuto(code).value;
     if (lang === 'mermaid') {
       return '<div class="mermaid">' + code + '</div>';
     } else if (lang === 'seq') {
@@ -20,7 +20,10 @@ const md = markdownit({
     } else if (lang === 'flow') {
       return '<div class="flow">' + code + '</div>';
     } else {
-      return `<pre><code class="hljs">${highlighted}</code></pre>`;
+      const cl = lang || 'javascript';
+      const prism = Prism.languages[cl] || Prism.languages.javascript
+      const html = Prism.highlight(code, prism, cl);
+      return `<pre class="language-${cl}"><code>${html}</code></pre>`;
     }
   }
 }).use(replaceLink).use(anchor).use(taskList);
