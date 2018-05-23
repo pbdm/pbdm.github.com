@@ -5,7 +5,7 @@ export const SQUENCE_PATH = [
 ];
 export const MERMAID_PATH = [
   '//cdn.jsdelivr.net/npm/mermaid@8.0.0-rc.8/dist/mermaid.min.js',
-  '//cdn.bootcss.com/mermaid/7.0.0/mermaid.forest.min.css'
+  // '//cdn.bootcss.com/mermaid/7.0.0/mermaid.forest.min.css'
 ];
 
 export const FLOWCHART_PATH = [
