@@ -17,6 +17,7 @@ export default class Header extends BasePage {
       const target = e.target;
       if (target.tagName === 'A') {
         e.preventDefault();
+        // document.body.classList.add('menu');
         window.history.pushState(null, null, target.getAttribute('href').replace('.md', '.html'));
       }
     });
