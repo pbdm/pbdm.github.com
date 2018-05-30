@@ -31,6 +31,7 @@ a:hover {
 
 img {
   max-width: 500px;
+  vertical-align: middle;
 }
 blockquote {
   padding: 0 1em;

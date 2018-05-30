@@ -7,7 +7,7 @@
   },
   "scripts": {
     "http": "http-server",
-    "https": "http-server -S",
+    "https": "http-server -S -C server.crt -K server.pem",
     "start": "node dev.js",
     "test": "ava --tap | tap-difflet"
   },
