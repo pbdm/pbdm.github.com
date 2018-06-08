@@ -72,7 +72,7 @@ export default class Toc {
   }
 
   scrollToAnchor() {
-    const hash = window.location.hash.replace('#', '');
+    const hash = decodeURIComponent(window.location.hash.replace('#', ''));
     const hashDom = document.getElementById(hash);
     if (hashDom) {
       getScrollingElement().scrollTo(0, hashDom.offsetTop);
