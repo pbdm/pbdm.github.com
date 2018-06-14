@@ -1,6 +1,5 @@
-import replaceLink from './markdown-it-replace-link.js';
+// TODO use require.js TODO directly load third party code
 import anchor from './markdown-it-anchor.js';
-import taskList from './markdown-it-task-lists.js';
 
 const md = markdownit({
   html: true,
@@ -26,6 +25,25 @@ const md = markdownit({
       return `<pre class="language-${cl}"><code>${html}</code></pre>`;
     }
   }
-}).use(replaceLink).use(anchor).use(taskList);
+})
+.use(markdownitReplaceLink)
+.use(anchor)
+.use(markdownitTaskLists)
+.use(...createContainer('tip'))
+.use(...createContainer('warning'))
+.use(...createContainer('danger'))
+
+function createContainer (type) {
+  return [markdownitContainer, type, {
+    render (tokens, idx) {
+      const token = tokens[idx]
+      if (token.nesting === 1) {
+        return `<div class="${type} custom-block">\n`
+      } else {
+        return `</div>\n`
+      }
+    }
+  }]
+}
 
 export default md;

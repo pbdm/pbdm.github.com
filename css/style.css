@@ -217,3 +217,24 @@ h3:before {
   font-weight: 700;
 }
 
+.custom-block {
+  padding: .1rem 1.5rem;
+  border-left-width: .5rem;
+  border-left-style: solid;
+  margin: 1rem 0;
+}
+
+.custom-block.tip {
+  background-color: #f3f5f7;
+  border-color: #42b983;
+}
+.custom-block.warn {
+  background-color: rgba(255,229,100,.3);
+  border-color: #e7c000;
+  color: #6b5900;
+}
+.custom-block.danger {
+  background-color: #ffe6e6;
+  border-color: #c00;
+  color: #4d0000;
+}
