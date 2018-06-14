@@ -228,7 +228,7 @@ h3:before {
   background-color: #f3f5f7;
   border-color: #42b983;
 }
-.custom-block.warn {
+.custom-block.warning {
   background-color: rgba(255,229,100,.3);
   border-color: #e7c000;
   color: #6b5900;

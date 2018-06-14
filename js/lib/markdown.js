@@ -1,4 +1,4 @@
-// TODO use require.js TODO directly load third party code
+// TODO directly load third party code
 import anchor from './markdown-it-anchor.js';
 
 const md = markdownit({
