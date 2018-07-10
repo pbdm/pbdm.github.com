@@ -2,6 +2,7 @@ import markdown from '../lib/markdown.js';
 import BasePage from './base.js';
 import { get } from '../lib/util.js';
 import { setGraph } from '../lib/graph.js';
+import { setImport } from '../lib/markdown-it-snippet.js';
 import Toc from '../lib/toc.js';
 
 export default class Post extends BasePage {
@@ -13,7 +14,7 @@ export default class Post extends BasePage {
 
   async fetchPostDetail() {
     let link;
-    if (this.type === 'others'){
+    if (this.type === 'others') {
       link = `/${this.type}/${this.file}`
     } else {
       link = `/posts/${this.type}/${this.file}` 
@@ -38,6 +39,7 @@ export default class Post extends BasePage {
 
   mounted(element) {
     setGraph();
+    setImport();
     // TODO init toc in constructor or after onload(image size problem)?
     this.toc = new Toc(element);
     this.toc.scrollToAnchor();

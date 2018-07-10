@@ -1,3 +1,5 @@
+import snippet from './markdown-it-snippet.js';
+
 const md = markdownit({
   html: true,
   replaceLink: function(link) {
@@ -24,6 +26,7 @@ const md = markdownit({
   }
 })
 .use(markdownitReplaceLink)
+.use(snippet)
 .use(anchor)
 .use(markdownitTaskLists)
 .use(...createContainer('tip'))
