@@ -1,6 +1,3 @@
-// TODO directly load third party code
-import anchor from './markdown-it-anchor.js';
-
 const md = markdownit({
   html: true,
   replaceLink: function(link) {
