@@ -18,9 +18,8 @@ export default function snippet (md, options = {}) {
     }
     const start = pos + 3
     const end = state.skipSpacesBack(max, pos)
-    const rawPath = state.src.slice(start, end).trim().replace(/^@/, root)
-    const filename = rawPath.split(/[{:\s]/).shift()
-    const content = `<div data-src=${filename} class="import"></div>`
+    const path = state.src.slice(start, end).trim().replace(/^@/, root)
+    const content = `<div data-src=${path} class="import"></div>`
     state.line = startLine + 1
     const token = state.push('html_inline')
     token.content = content
@@ -40,9 +39,14 @@ async function parseImport(element, index, type) {
   const src = element.dataset.src;
   const extension = (src.match(/\.(\w+)$/) || ['','javascript'])[1];
   const language = Extensions[extension] || extension;
-  const code = await get(src);
-  const prism = Prism.languages[language];
-  const html = Prism.highlight(code, prism, language);
+  let html;
+  // TODO loading
+  try {
+    const code = await get(src);
+    html = Prism.highlight(code, Prism.languages[language], language);
+  } catch (e) {
+    html = e.message
+  }
   element.innerHTML = `<pre class="language-${language}"><code>${html}</code></pre>`
 }
 
