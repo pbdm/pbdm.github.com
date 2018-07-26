@@ -22,6 +22,7 @@ nav {
   overflow-y: auto;
   list-style: none;
   transition: transform 250ms ease;
+  border-right: 1px #e1e4e8 solid;
 }
 nav a {
   color: #1abc9c;
@@ -60,7 +61,7 @@ nav ul li p {
 
 .container {
   margin-left: 20vw;
-  padding: 1rem 2rem;
+  padding: 1rem 3rem;
   box-sizing: border-box;
   min-height: 90vh;
   transition: transform 250ms ease;
