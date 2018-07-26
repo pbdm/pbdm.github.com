@@ -25,7 +25,7 @@ class App {
     this.hamburger.addEventListener('click', () => {
       const toggleClass = 'menu'
       const body = document.body;
-      if (body.classList[0] === toggleClass) {
+      if (Array.prototype.indexOf.call(body.classList, toggleClass) !== -1) {
         body.classList.remove(toggleClass);
       } else {
         body.classList.add(toggleClass);
