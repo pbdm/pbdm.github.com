@@ -4,6 +4,3 @@
 [submodule "playground"]
 	path = playground
 	url = https://github.com/pbdm/playground.git
-[submodule "others"]
-	path = others
-	url = https://github.com/pbdm/others.git
