@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PENG Bo's personal homepage">
+  <meta name="author" content="PENG Bo">
+  <link rel="shortcut icon" href="/img/favicon.png">
+  <link rel="apple-touch-icon" href="/img/touch-icon.png">
+  <title>倒数日</title>
+  <style>
+    table {
+      margin: 0 auto;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <table>
+  </table>
+  <script>
+    const data = {
+      "入职爱奇艺": "2017-04-12",
+      "彭雨宸出生": "2016-06-29",
+      "入职平安": '2014-12-01',
+      "回国": '2013-03-31',
+      "大学毕业": '2007-06-30',
+      "高考结束": '2003-06-09',
+      "初中毕业": '2000-06-30',
+      "小学毕业": '1997-06-30',
+      "出生": '1986-09-01',
+    }
+    const table = document.getElementsByTagName('table')[0];
+    const fragment = document.createDocumentFragment();
+
+    // setInterval(refresh, 1000);
+    print();
+
+    function print() {
+      const now = new Date();
+      Object.keys(data).forEach((key) => {
+        const line = document.createElement('tr');
+        const countDownString = now - new Date(data[key]);
+        const day = Math.floor( countDownString / 1000 / 60 / 60 / 24 );
+        // const hours = Math.floor( countDownString / 1000 / 60 / 60 % 24 );
+        // const min = Math.floor(countDownString / 1000 / 60 % 60);
+        // const sec = Math.floor(countDownString / 1000 % 60);
+        const colKey = document.createElement('td');
+        colKey.textContent = key;
+        const colValue = document.createElement('td');
+        colValue.textContent = `${day}`;
+        const colUnit = document.createElement('td');
+        colUnit.textContent = `天`;
+        line.appendChild(colKey)
+        line.appendChild(colValue)
+        line.appendChild(colUnit)
+        fragment.appendChild(line);
+      })
+      table.innerHTML = '';
+      table.appendChild(fragment);
+    }
+  </script>
+</body>
+
+</html>
