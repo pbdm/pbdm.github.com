@@ -9,7 +9,7 @@ body {
 }
 
 .markdown-body img {
-  max-width: 500px;
+  /* max-width: 500px; */
   vertical-align: middle;
 }
 
