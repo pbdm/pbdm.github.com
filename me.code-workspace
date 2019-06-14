@@ -1,13 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "posts"
+			"path": "."
 		},
 		{
 			"path": "/Users/bopeng/c/others"
-		},
-		{
-			"path": "playground"
 		}
 	],
 	"settings": {}

@@ -8,21 +8,11 @@
   "scripts": {
     "http": "http-server -c-1 -p 22222",
     "https": "http-server -c-1 -S -C server.crt -K server.pem",
-    "start": "node dev.js",
-    "test": "ava --tap | tap-difflet"
-  },
-  "ava": {
-    "require": [
-      "babel-register",
-      "./test/helpers/setup-browser-env.js"
-    ]
+    "start": "node dev.js"
   },
   "devDependencies": {
-    "ava": "^1.2.0",
     "browser-sync": "^2.26.3",
-    "http-server": "^0.11.1",
-    "jsdom": "^13.2.0",
-    "tap-difflet": "^0.7.1"
+    "http-server": "^0.11.1"
   },
   "dependencies": {}
 }
