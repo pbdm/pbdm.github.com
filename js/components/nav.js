@@ -16,8 +16,11 @@ export default class Header extends BasePage {
     element.addEventListener('click', e => {
       const target = e.target;
       if (target.tagName === 'A') {
-        e.preventDefault();
-        window.history.pushState(null, null, target.getAttribute('href').replace('.md', '.html'));
+        const url = target.getAttribute('href');
+        if (url.indexOf('slides.html') === -1) {
+          e.preventDefault();
+          window.history.pushState(null, null, url.replace('.md', '.html'));
+        }
       }
     });
   }
