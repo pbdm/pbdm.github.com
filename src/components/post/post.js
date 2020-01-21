@@ -4,8 +4,9 @@ import { setImport } from '../../lib/markdown-it-snippet.js';
 
 const template = `
   <link href="/src/components/post/post.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css" rel="stylesheet">
   <link href="//cdn.jsdelivr.net/npm/prismjs@1.14.0/themes/prism-tomorrow.css" rel="stylesheet">
-  <main id="main"></main>
+  <main id="main" class="markdown-body"></main>
 `
 
 export class Post extends HTMLElement {
