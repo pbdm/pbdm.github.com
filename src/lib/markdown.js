@@ -10,13 +10,8 @@ const md = markdownit({
     }
   },
   highlight: function(code, lang) {
-    // const highlighted = hljs.highlightAuto(code).value;
     if (lang === 'mermaid') {
       return '<div class="mermaid">' + code + '</div>';
-    } else if (lang === 'seq') {
-      return '<div class="seq">' + code + '</div>';
-    } else if (lang === 'flow') {
-      return '<div class="flow">' + code + '</div>';
     } else {
       const cl = lang || 'javascript';
       const prism = Prism.languages[cl] || Prism.languages.javascript

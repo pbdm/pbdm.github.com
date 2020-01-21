@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 9.0 js4.0 fremework with WebComponents
+
+* `2020-01-21`引入 Web Components
+
 ## 8.0 js3.0 fremework
 
 * `2017-10-16`将 posts 移到 submodule

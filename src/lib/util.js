@@ -1,10 +1,3 @@
-export function isPromise(value) {
-  if (value !== null && typeof value === 'object') {
-    return value && typeof value.then === 'function';
-  }
-  return false;
-}
-
 export function htmlDecode(input) {
   var e = document.createElement('div');
   e.innerHTML = input;

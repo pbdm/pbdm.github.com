@@ -1,38 +1,51 @@
-import { delHtmlTag, getScrollingElement } from './util.js';
+import { delHtmlTag, getScrollingElement } from '../../lib/util.js';
+const template = `
+  <link href="/src/components/toc/toc.css" rel="stylesheet">
+  <div id="toc"></div>
+`
 
-// TODO add test code;
+export class Toc extends HTMLElement {
 
-export default class Toc {
-  constructor(rootElement, headers, parentClass) {
-    this.rootElement = rootElement;
-    this.headers = headers || 'h2, h3, h4, h5';
-    this.parentClass = parentClass || 'toc';
-    this.rootClassName = 'has-toc';
+  constructor() {
+    super();
+    this.attachShadow({ 
+      mode: "open" 
+    });
+    this.shadowRoot.innerHTML = template;
     this.listen = this.listen.bind(this);
     this.listenRaf = this.listenRaf.bind(this);
-    // TODO add common function here(onload and onload component)
-    // window.addEventListener('load', this.setToc.bind(this));
-    this.setToc();
+    this.headers = 'h2, h3, h4, h5';
   }
 
-  removeToc() {
-    this.rootElement.classList.remove(this.rootClassName);
+  listenRaf() {
+    window.requestAnimationFrame(this.listen);
+  }
+
+  connectedCallback() {
+    window.addEventListener('scroll', this.listenRaf);
+  }
+
+  disconnectedCallback() {
     window.removeEventListener('scroll', this.listenRaf);
   }
 
+  set contentElement(element) {
+    this.rootElement = element;
+    this.setToc();
+  }
+
   setToc() {
+    this.shadowRoot.getElementById('toc').innerHTML = '';
     let childDoms = this.rootElement.querySelectorAll(this.headers);
-    // sometimes we don't need toc
     if (childDoms && childDoms.length > 0) {
+      this.dispatchEvent(new CustomEvent('hasToc') )
       this.tocContent = document.createElement('ul');
+      this.tocContent.classList.add('toc');
       const titleDom = document.createElement('span');
       titleDom.classList.add('title');
       titleDom.innerHTML = '文章目录';
       this.tocContent.appendChild(titleDom);
-      this.tocContent.classList.add(this.parentClass);
       this.scrollArray = [];
-      // must pust before count child offsetTop
-      this.rootElement.classList.add(this.rootClassName);
       for (let childDom of childDoms) {
         // recode list position
         this.scrollArray.push(childDom.offsetTop);
@@ -41,18 +54,14 @@ export default class Toc {
         const inner = `<a href="#${name}">${name}</a>`
         tempDom.innerHTML = inner
         tempDom.classList.add(
-          `${this.parentClass}-${childDom.tagName.toLowerCase()}`
+          `${childDom.tagName.toLowerCase()}`
         );
         this.tocContent.appendChild(tempDom);
       }
-      this.rootElement.appendChild(this.tocContent);
-      window.addEventListener('scroll', this.listenRaf);
-      this.listen();
+      this.shadowRoot.getElementById('toc').appendChild(this.tocContent);
+    } else {
+      this.dispatchEvent(new CustomEvent('noToc') ) 
     }
-  }
-
-  listenRaf() {
-    window.requestAnimationFrame(this.listen);
   }
 
   listen() {
@@ -71,11 +80,6 @@ export default class Toc {
     });
   }
 
-  scrollToAnchor() {
-    const hash = decodeURIComponent(window.location.hash.replace('#', ''));
-    const hashDom = document.getElementById(hash);
-    if (hashDom) {
-      getScrollingElement().scrollTo(0, hashDom.offsetTop);
-    }
-  }
 }
+
+window.customElements.define('custom-toc', Toc)
