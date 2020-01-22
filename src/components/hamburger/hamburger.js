@@ -11,15 +11,7 @@ export class Hamburger extends HTMLElement {
       mode: "open" 
     });
     this.shadowRoot.innerHTML = template;
-    this.shadowRoot.addEventListener('click', () => {
-      const toggleClass = 'show-menu'
-      const body = document.body;
-      if (Array.prototype.indexOf.call(body.classList, toggleClass) !== -1) {
-        body.classList.remove(toggleClass);
-      } else {
-        body.classList.add(toggleClass);
-      }
-    })
+    // safari mobile 里不能用 this.shadowRoot.addEventlistener...
   }
 
 }

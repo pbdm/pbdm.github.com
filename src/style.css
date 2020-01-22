@@ -6,6 +6,7 @@ html {
 }
 body {
   margin: 0;
+  overflow-y: hidden;
 }
 
 custom-nav {
@@ -38,6 +39,11 @@ custom-post.has-toc {
   transition: margin-left 250ms ease;
   padding: 1rem 3rem;
   box-sizing: border-box;
+}
+
+custom-hamburger {
+  margin-left: -5vw;
+  display: block;
 }
 
 .show-menu .container {

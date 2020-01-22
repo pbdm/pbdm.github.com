@@ -65,6 +65,9 @@ export class Toc extends HTMLElement {
   }
 
   listen() {
+    if (!this.tocContent) {
+      return
+    }
     const tocList = this.tocContent.getElementsByTagName('li');
     const scrollArray = this.scrollArray;
     let top = getScrollingElement().scrollTop + 10;

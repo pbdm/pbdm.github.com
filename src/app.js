@@ -45,5 +45,14 @@ toc.addEventListener('noToc', () => {
   post.classList.remove('has-toc')
 })
 
+document.getElementsByTagName('custom-hamburger')[0].addEventListener('click', () => {
+  const toggleClass = 'show-menu'
+  const body = document.body;
+  if (Array.prototype.indexOf.call(body.classList, toggleClass) !== -1) {
+    body.classList.remove(toggleClass);
+  } else {
+    body.classList.add(toggleClass);
+  }
+})
 
 
