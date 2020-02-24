@@ -19,7 +19,7 @@
 ## 6.0 js2.0 framework
 
 * `2016-11-16`将服务迁移回`Github Pages`, 采用`Github API`调用文章数据
-* `2016-12-06`remove Github API(使用次数限制问题)
+* `2016-12-06`remove Github API([使用次数限制问题](https://developer.github.com/v3/#rate-limiting))
 * `2017-03-02`change marked to markdown-it
 
 ## 5.0 采用 node.js 服务端渲染

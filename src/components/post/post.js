@@ -56,8 +56,18 @@ export class Post extends HTMLElement {
   async renderDate() {
     this.dateDom = this.shadowRoot.getElementById('date');
     this.dateDom.innerHTML = '';
-    const commitInfo = await get(`https://api.github.com/repos/pbdm/posts/commits?path=${this.renderPath}&page=1&per_page=1}`, 'json');
-    const date = commitInfo[0].commit.author.date; 
+    const commitInfo = await get(`https://api.github.com/repos/pbdm/posts/commits?path=${this.renderPath}&page=1&per_page=1`, 'json');
+    let date
+    try {
+      if (commitInfo.commit) {
+        date = commitInfo[0].commit.author.date; 
+      } else {
+        date = commitInfo.message.slice(0 ,23);
+      }
+    } catch (e) {
+      console.warn(e);
+      date = 'Error'
+    }
     this.dateDom.innerHTML = `${date.split('T')[0]}`;
   }
 
