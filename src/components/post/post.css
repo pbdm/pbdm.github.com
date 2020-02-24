@@ -49,3 +49,8 @@ svg {
   font-size: 12px;
   float: right;
 }
+@media (max-width: 768px) {
+  .date-wrapper {
+    display: none;
+  }
+}

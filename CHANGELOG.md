@@ -3,6 +3,7 @@
 ## 9.0 js4.0 fremework with WebComponents
 
 * `2020-01-21`引入 Web Components
+* `2020-02-24`添加显示文章最后更新时间
 
 ## 8.0 js3.0 fremework
 
@@ -17,8 +18,8 @@
 
 ## 6.0 js2.0 framework
 
-* `2016-11-16`将服务迁移回`githubpage`, 采用`githubapi`调用文章数据
-* `2016-12-06`remove githubapi
+* `2016-11-16`将服务迁移回`Github Pages`, 采用`Github API`调用文章数据
+* `2016-12-06`remove Github API(使用次数限制问题)
 * `2017-03-02`change marked to markdown-it
 
 ## 5.0 采用 node.js 服务端渲染
