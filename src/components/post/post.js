@@ -59,7 +59,7 @@ export class Post extends HTMLElement {
     const commitInfo = await get(`https://api.github.com/repos/pbdm/posts/commits?path=${this.renderPath}&page=1&per_page=1`, 'json');
     let date
     try {
-      if (commitInfo.commit) {
+      if (commitInfo.length) {
         date = commitInfo[0].commit.author.date; 
       } else {
         date = commitInfo.message.slice(0 ,23);
