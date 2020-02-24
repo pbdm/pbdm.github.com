@@ -64,10 +64,15 @@ export class Post extends HTMLElement {
     })
   }
 
+  changeTitle() {
+    document.title = this.main.getElementsByTagName('h1')[0].innerText + ' | 琥珀草'
+  }
+
   async render(file) {
     const content = await this.fetchPostDetail(file);
     this.main = this.shadowRoot.getElementById('main');
     this.main.innerHTML = content;
+    this.changeTitle();
     this.renderMermaid();
     // 用于处理 import playground 里的代码
     setImport();
