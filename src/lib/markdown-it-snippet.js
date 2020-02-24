@@ -50,8 +50,8 @@ async function parseImport(element, index, type) {
   element.innerHTML = `<pre class="language-${language}"><code>${html}</code></pre>`
 }
 
-export function setImport() {
-  const dom = document.getElementsByClassName('import');
+export function setImport(doc) {
+  const dom = doc.getElementsByClassName('import');
   Array.prototype.forEach.call(dom, function(element, index) {
     parseImport(element, index);
   });

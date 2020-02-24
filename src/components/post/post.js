@@ -75,7 +75,7 @@ export class Post extends HTMLElement {
     this.changeTitle();
     this.renderMermaid();
     // 用于处理 import playground 里的代码
-    setImport();
+    setImport(this.main);
     this.dispatchEvent(new CustomEvent('rendered') )
   }
 
