@@ -4,9 +4,13 @@ export function htmlDecode(input) {
   return e.childNodes[0].nodeValue;
 }
 
-export async function get(url) {
+export async function get(url, type) {
   let response = await fetch(url);
-  return await response.text();
+  if (type === 'json') {
+    return await response.json();
+  } else {
+    return await response.text();
+  }
 }
 
 export function b64_to_utf8(str) {

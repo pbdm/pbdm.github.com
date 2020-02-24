@@ -43,3 +43,9 @@ svg {
   border-color: #c00;
   color: #4d0000;
 }
+
+.date-wrapper {
+  color: #bababa;
+  font-size: 12px;
+  float: right;
+}

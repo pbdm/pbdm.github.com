@@ -6,6 +6,10 @@ const template = `
   <link href="/src/components/post/post.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css" rel="stylesheet">
   <link href="//cdn.jsdelivr.net/npm/prismjs@1.14.0/themes/prism-tomorrow.css" rel="stylesheet">
+  <div class="date-wrapper">
+    最后更新时间:
+    <span id="date"></span>
+  </div>
   <main id="main" class="markdown-body"></main>
 `
 
@@ -26,16 +30,17 @@ export class Post extends HTMLElement {
   async switcher(path) {
     path = path || window.location.pathname
     path = path.replace('.html', '.md');
-    let renderPath = path;
+    this.renderPath = path;
     if (path === '/') {
-      renderPath = '/INTRO.md';
+      this.renderPath = '/INTRO.md';
     }
-    await this.render(renderPath);
+    await this.render();
     this.scrollToAnchor();
+    this.renderDate()
   }
 
-  async fetchPostDetail(file) {
-    const link = `/posts${file}` 
+  async fetchPostDetail() {
+    const link = `/posts${this.renderPath}` 
     const data = await get(link);
     if (data.indexOf('<!DOCTYPE html>') === 0) {
       return '404';
@@ -46,6 +51,14 @@ export class Post extends HTMLElement {
         return `${markdown.render(data)}`;
       }
     }
+  }
+
+  async renderDate() {
+    this.dateDom = this.shadowRoot.getElementById('date');
+    this.dateDom.innerHTML = '';
+    const commitInfo = await get(`https://api.github.com/repos/pbdm/posts/commits?path=${this.renderPath}&page=1&per_page=1}`, 'json');
+    const date = commitInfo[0].commit.author.date; 
+    this.dateDom.innerHTML = `${date.split('T')[0]}`;
   }
 
   get container() {
@@ -68,8 +81,8 @@ export class Post extends HTMLElement {
     document.title = this.main.getElementsByTagName('h1')[0].innerText + ' | 琥珀草'
   }
 
-  async render(file) {
-    const content = await this.fetchPostDetail(file);
+  async render() {
+    const content = await this.fetchPostDetail();
     this.main = this.shadowRoot.getElementById('main');
     this.main.innerHTML = content;
     this.changeTitle();
