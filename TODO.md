@@ -2,7 +2,6 @@
 
 * 首屏性能优化
 * 为 获取更新日期 API 添加 OAuth
-* add servers worker, 将 js css 资源下载到 Cache Storage 中
 * 自动下载 pdf, 使用 [markdown-pdf](https://www.npmjs.com/package/markdown-pdf)
 * 单页面应用搜索引擎
 * 接入评论系统 (野狗, firebase, duoshuo, disqus)

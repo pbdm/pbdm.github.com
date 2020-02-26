@@ -1,3 +1,8 @@
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./sw.js')
+  });
+}
 import './components/post/post.js';
 import './components/nav/nav.js';
 import './components/toc/toc.js';
