@@ -7,5 +7,10 @@
 			"path": "/Users/bopeng/c/me/others"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"workbench.colorCustomizations": {
+			"activityBar.background": "#67c23a",
+			"activityBar.foreground": "#000"
+		},
+	}
 }
