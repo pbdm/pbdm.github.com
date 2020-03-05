@@ -45,10 +45,6 @@ custom-post.has-toc {
 }
 
 @media (max-width: 768px) {
-  custom-hamburger {
-    margin-left: -5vw;
-    display: block;
-  }
   .show-menu custom-nav {
     transform: translateX(0); 
   }
@@ -61,6 +57,7 @@ custom-post.has-toc {
   }
   .container {
     margin-left: 0;
+    padding: 1rem;
   }
   custom-toc {
     display: none;
