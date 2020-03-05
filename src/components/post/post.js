@@ -6,9 +6,11 @@ const template = `
   <link href="/src/components/post/post.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css" rel="stylesheet">
   <link href="//cdn.jsdelivr.net/npm/prismjs@1.14.0/themes/prism-tomorrow.css" rel="stylesheet">
-  <div class="date-wrapper">
+  <div class="info">
     最后更新时间:
     <span id="date"></span>
+    /
+    <a id="github" href="dd">Github</a>
   </div>
   <main id="main" class="markdown-body"></main>
 `
@@ -36,6 +38,7 @@ export class Post extends HTMLElement {
     }
     await this.render();
     this.scrollToAnchor();
+    this.renderGithub();
     this.renderDate()
   }
 
@@ -53,6 +56,10 @@ export class Post extends HTMLElement {
     }
   }
 
+  renderGithub() {
+    this.githubDom = this.shadowRoot.getElementById('github');
+    this.githubDom.href = `https://github.com/pbdm/posts/blob/master${this.renderPath}`;
+  }
   async renderDate() {
     this.dateDom = this.shadowRoot.getElementById('date');
     this.dateDom.innerHTML = '';
