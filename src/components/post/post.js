@@ -10,7 +10,7 @@ const template = `
     最后更新时间:
     <span id="date"></span>
     /
-    <a id="github" href="dd">Github</a>
+    <a id="github" href="dd">修改历史</a>
   </div>
   <main id="main" class="markdown-body"></main>
 `
@@ -58,7 +58,7 @@ export class Post extends HTMLElement {
 
   renderGithub() {
     this.githubDom = this.shadowRoot.getElementById('github');
-    this.githubDom.href = `https://github.com/pbdm/posts/blob/master${this.renderPath}`;
+    this.githubDom.href = `https://github.com/pbdm/posts/commits/master${this.renderPath}`;
   }
   async renderDate() {
     this.dateDom = this.shadowRoot.getElementById('date');
