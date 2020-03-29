@@ -8,6 +8,6 @@ local.json
 posts/local
 local.html
 static/
-# others
-# posts
-# playground
+others
+posts
+playground
