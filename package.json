@@ -6,7 +6,7 @@
     "url": "https://github.com/pbdm/pbdm.github.com.git"
   },
   "scripts": {
-    "init": "ln -s ../playground playground && ln -s ../posts posts ln -s ../others others",
+    "init": "ln -s ../playground playground && ln -s ../posts posts && ln -s ../others others",
     "upload": "npm run push:posts && npm run push:playground && git add . && git commit -m 'update sources' && git push",
     "push:posts": "cd posts && git push",
     "push:playground": "cd playground && git push",
