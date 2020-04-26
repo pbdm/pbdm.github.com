@@ -29,9 +29,9 @@ export class Comment extends HTMLElement {
       id,      // Ensure uniqueness and length less than 50
       distractionFreeMode: false  // Facebook-like distraction free mode
     })
-    
-    gitalk.render(this.shadowRoot.getElementById('gitalk-container'))
 
+    this.shadowRoot.getElementById('gitalk-container').innerHTML = '';
+    gitalk.render(this.shadowRoot.getElementById('gitalk-container'))
   }
 
 }
