@@ -7,8 +7,10 @@ import './components/post/post.js';
 import './components/nav/nav.js';
 import './components/toc/toc.js';
 import './components/hamburger/hamburger.js';
+import './components/gitalk/gitalk.js';
  
 const post = document.getElementsByTagName('custom-post')[0];
+const comment = document.getElementsByTagName('custom-comment')[0];
 const toc = document.getElementsByTagName('custom-toc')[0];
 
 // add history.onpushstate listener
@@ -25,18 +27,22 @@ const toc = document.getElementsByTagName('custom-toc')[0];
 // 基本 router
 let currentPathname = window.location.pathname;
 window.history.onpushstate = params => {
-  currentPathname = params[2]
-  post.path = params[2]
+  onPathChange(params[2]);
 };
 window.addEventListener('popstate', e => {
   // 防止 hash 跳转触发的渲染
   if (currentPathname !== window.location.pathname) {
-    currentPathname = window.location.pathname
-    post.path = window.location.pathname
+    onPathChange(window.location.pathname)
   } else {
     post.scrollToAnchor();
   }
 });
+
+function onPathChange(newPath) {
+  currentPathname = window.location.pathname
+  post.path = window.location.pathname
+  comment.render();
+}
 
 post.addEventListener('rendered', () => {
   toc.contentElement = post.container
