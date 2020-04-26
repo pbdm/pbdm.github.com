@@ -41,7 +41,7 @@ window.addEventListener('popstate', e => {
 function onPathChange(newPath) {
   currentPathname = window.location.pathname
   post.path = window.location.pathname
-  comment.render();
+  comment.render(newPath);
 }
 
 post.addEventListener('rendered', () => {
