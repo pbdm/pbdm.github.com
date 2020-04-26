@@ -17,7 +17,7 @@ export class Comment extends HTMLElement {
 
   render(id) {
     if (id === '/') {
-      id = '/INTRO.md';
+      id = '/INTRO.html';
     }
     const gitalk = new Gitalk({
       clientID: '9ff28fdcfa8dee48ec3b',
