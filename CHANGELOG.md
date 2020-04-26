@@ -5,6 +5,7 @@
 * `2020-01-21`引入 Web Components
 * `2020-02-24`添加显示文章最后更新时间
 * `2020-02-26`基于 Workbox PWA 化
+* `2020-04-26`接入 [gitalk](https://gitalk.github.io/) 作为评论系统
 
 ## 8.0 js3.0 fremework
 
