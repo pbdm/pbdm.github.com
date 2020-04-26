@@ -12,10 +12,11 @@ export class Comment extends HTMLElement {
       mode: "open" 
     });
     this.shadowRoot.innerHTML = template;
-    this.render(window.location.pathname);
+    this.render();
   }
 
-  render(id) {
+  render() {
+    let id = window.location.pathname
     if (id === '/') {
       id = '/INTRO.html';
     }

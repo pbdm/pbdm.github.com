@@ -41,11 +41,11 @@ window.addEventListener('popstate', e => {
 function onPathChange(newPath) {
   currentPathname = newPath
   post.path = newPath
-  comment.render(newPath);
 }
 
 post.addEventListener('rendered', () => {
   toc.contentElement = post.container
+  comment.render();
 })
 
 toc.addEventListener('hasToc', () => {
