@@ -41,7 +41,11 @@ window.addEventListener('popstate', e => {
 function onPathChange(newPath) {
   currentPathname = newPath
   post.path = newPath
+  toc.path = newPath
 }
+
+// 首次触发
+onPathChange(window.location.pathname)
 
 post.addEventListener('rendered', () => {
   toc.contentElement = post.container

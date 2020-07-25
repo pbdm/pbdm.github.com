@@ -1,6 +1,7 @@
 import { delHtmlTag, getScrollingElement } from '../../lib/util.js';
 const template = `
   <link href="/src/components/toc/toc.css" rel="stylesheet">
+  <link href="/src/components/toc/toc.css" rel="stylesheet">
   <div id="toc"></div>
 `
 
@@ -34,6 +35,25 @@ export class Toc extends HTMLElement {
     this.setToc();
   }
 
+  set path(pathname) {
+    pathname = pathname.replace('.html', '.md');
+    if (pathname === '/') {
+      pathname = '/INTRO.md';
+    }
+    this.mindMapPath = `mindmap/index.html?${pathname}`
+  }
+
+  // TODO 思维导图独立模块
+  initMindMap() {
+    const mindMapDom = document.createElement('a');
+    mindMapDom.href = this.mindMapPath
+    mindMapDom.style.color = '#1abc9c'
+    mindMapDom.style.display = 'block' 
+    mindMapDom.style.textAlign = 'center' 
+    mindMapDom.innerHTML = '思维导图'
+    return mindMapDom
+  }
+
   setToc() {
     this.shadowRoot.getElementById('toc').innerHTML = '';
     let childDoms = this.rootElement.querySelectorAll(this.headers);
@@ -44,6 +64,7 @@ export class Toc extends HTMLElement {
       const titleDom = document.createElement('span');
       titleDom.classList.add('title');
       titleDom.innerHTML = '文章目录';
+      this.tocContent.appendChild(this.initMindMap());
       this.tocContent.appendChild(titleDom);
       this.scrollArray = [];
       for (let childDom of childDoms) {

@@ -10,7 +10,7 @@ const template = `
     最后更新时间:
     <span id="date"></span>
     /
-    <a id="github" href="dd">修改历史</a>
+    <a id="github">修改历史</a>
   </div>
   <main id="main" class="markdown-body"></main>
 `
@@ -120,7 +120,7 @@ export class Post extends HTMLElement {
   }
 
   async connectedCallback() {
-    this.switcher();
+    // 
   }
 
 }

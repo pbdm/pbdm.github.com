@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <link href="//cdn.jsdelivr.net/gh/dundalek/markmap/style/view.mindmap.css" rel="stylesheet">
+  </head>
+  <body>
+    <svg id="markmap" style="width: 100vw; height: 100vh;"></svg>
+    <script src="//cdn.jsdelivr.net/npm/d3@3.5.6/d3.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/dundalek/markmap/lib/d3-flextree.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/dundalek/markmap/lib/view.mindmap.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/remarkable@2.0.1/dist/remarkable.min.js"></script>
+    <script src="./parse.markdown.js"></script>
+    <script src="./transform.headings.js"></script>
+    <script>
+      const search = window.location.search.slice(1);
+      if (search.indexOf('others') === -1) {
+        sourceUrl = `../posts/${window.location.search.slice(1)}`;
+      } else {
+        sourceUrl = `../${window.location.search.slice(1)}`;
+      }
+      d3.text(sourceUrl, function (error, text) {
+        if (error) throw error;
+        const data = transformHeadings(parseMarkdown(text));
+
+        markmap('svg#markmap', data, {
+          preset: 'colorful', // or default
+          autoFit: true,
+          linkShape: 'diagonal',
+          // linkShape: 'bracket'
+        });
+      });
+    </script>
+  </body>
+</html>
