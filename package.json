@@ -8,11 +8,9 @@
   "scripts": {
     "init": "ln -s ../playground playground && ln -s ../posts posts && ln -s ../others others",
     "http": "http-server -c-1 -p 22222",
-    "https": "http-server -c-1 -S -C server.crt -K server.pem",
-    "start": "node dev.js"
+    "https": "http-server -c-1 -S -C server.crt -K server.pem"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.3",
     "http-server": "^0.11.1"
   },
   "dependencies": {}
