@@ -20,7 +20,9 @@
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>
       const search = window.location.search.slice(1);
-      if (search.indexOf('others') === -1) {
+      if (search.indexOf('http') === 0) {
+        sourceUrl = search;
+      } else if (search.indexOf('others') === -1) {
         sourceUrl = `posts/slides/${window.location.search.slice(1)}`;
       } else {
         sourceUrl = `${window.location.search.slice(1)}`;
