@@ -50,6 +50,7 @@ export class Toc extends HTMLElement {
     mindMapDom.style.color = '#1abc9c'
     mindMapDom.style.display = 'block' 
     mindMapDom.style.textAlign = 'center' 
+    mindMapDom.style.textDecoration = 'underline'
     mindMapDom.innerHTML = '思维导图'
     return mindMapDom
   }
