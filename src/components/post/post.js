@@ -30,7 +30,6 @@ export class Post extends HTMLElement {
   }
 
   async switcher(path) {
-    path = path || window.location.pathname
     path = path.replace('.html', '.md');
     this.renderPath = path;
     if (path === '/') {
