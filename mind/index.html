@@ -1,6 +1,6 @@
 <html>
   <head>
-    <link href="//cdn.jsdelivr.net/gh/dundalek/markmap/style/view.mindmap.css" rel="stylesheet">
+    <link href="//cdn.jsdelivr.net/gh/dundalek/markmap/style/view.mindmap.css" rel="stylesheet" />
   </head>
   <body>
     <svg id="markmap" style="width: 100vw; height: 100vh;"></svg>
@@ -11,16 +11,25 @@
     <script src="./parse.markdown.js"></script>
     <script src="./transform.headings.js"></script>
     <script>
+      function b64_to_utf8(str) {
+        return decodeURIComponent(escape(window.atob(str)));
+      }
       const search = window.location.search.slice(1);
       if (search.indexOf('http') === 0) {
-        sourceUrl = search;
-      } else if (search.indexOf('others') === -1) {
-        sourceUrl = `../posts/${window.location.search.slice(1)}`;
-      } else { 
-        sourceUrl = `../${window.location.search.slice(1)}`;
+        d3.text(search, function (error, text) {
+          if (error) throw error;
+          parse(text)
+        });
+      } else {
+        const url = `https://api.github.com/repos/pbdm/${search}?access_token=059a259faacc0260574e37741d7230d7d17f9509`;
+        d3.json(url, function (error, text) {
+          if (error) throw error;
+          text = b64_to_utf8(text.content);
+          parse(text)
+        });
       }
-      d3.text(sourceUrl, function (error, text) {
-        if (error) throw error;
+
+      function parse(text) {
         const data = transformHeadings(parseMarkdown(text));
 
         markmap('svg#markmap', data, {
@@ -29,7 +38,7 @@
           linkShape: 'diagonal',
           // linkShape: 'bracket'
         });
-      });
+      }
     </script>
   </body>
 </html>

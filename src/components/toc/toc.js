@@ -40,7 +40,7 @@ export class Toc extends HTMLElement {
     if (pathname === '/') {
       pathname = '/INTRO.md';
     }
-    this.mindMapPath = `/mind/index.html?${pathname}`
+    this.mindMapPath = `/mind/index.html?posts/contents${pathname}`
   }
 
   // TODO 思维导图独立模块
