@@ -21,7 +21,7 @@
           parse(text)
         });
       } else {
-        const url = `https://api.github.com/repos/pbdm/${search}?access_token=059a259faacc0260574e37741d7230d7d17f9509`;
+        const url = `https://api.github.com/repos/pbdm/${search}?access_token=74b05eb6854302e338eddbed3c63cc26a86fc841`;
         d3.json(url, function (error, text) {
           if (error) throw error;
           text = b64_to_utf8(text.content);
