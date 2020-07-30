@@ -21,7 +21,7 @@
           parse(text)
         });
       } else {
-        const url = `https://api.github.com/repos/pbdm/${search}?access_token=${btoa('k®{ñÝûï×Úç¿8kWv×�ws}·ß^<wÎÝãW�')}`;
+        const url = `https://api.github.com/repos/pbdm/${search}?access_token=${atob('YTY1NzhkMzc3OWZhNTc4NGExZDIxNDUzYzMyMzMxNDhkODdkNDFlZQ==')}`;
         d3.json(url, function (error, text) {
           if (error) throw error;
           text = b64_to_utf8(text.content);
