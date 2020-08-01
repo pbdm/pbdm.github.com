@@ -21,8 +21,10 @@
           parse(text)
         });
       } else {
-        const url = `https://api.github.com/repos/pbdm/${search}?access_token=${atob('YTY1NzhkMzc3OWZhNTc4NGExZDIxNDUzYzMyMzMxNDhkODdkNDFlZQ==')}`;
-        d3.json(url, function (error, text) {
+        const url = `https://api.github.com/repos/pbdm/${search}`;
+        d3.json(url)
+          .header("Authorization", `token ${atob('YTY1NzhkMzc3OWZhNTc4NGExZDIxNDUzYzMyMzMxNDhkODdkNDFlZQ==')}`)
+          .get(function (error, text) {
           if (error) throw error;
           text = b64_to_utf8(text.content);
           parse(text)
