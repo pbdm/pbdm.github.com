@@ -27,7 +27,7 @@ custom-post.has-toc {
   margin-right: 20vw;
 }
 
-.show-menu custom-nav {
+.hide-menu custom-nav {
   transform: translateX(-22vw); 
 }
 
@@ -40,19 +40,19 @@ custom-post.has-toc {
   box-sizing: border-box;
 }
 
-.show-menu .container {
+.hide-menu .container {
   margin-left: 0;
 }
 
 @media (max-width: 768px) {
-  .show-menu custom-nav {
+  .hide-menu custom-nav {
     transform: translateX(0); 
   }
   custom-nav {
     width: 80vw;
     transform: translateX(-85vw);
   }
-  .show-menu .container {
+  .hide-menu .container {
     transform: translateX(80vw); 
   }
   .container {
