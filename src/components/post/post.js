@@ -42,7 +42,12 @@ export class Post extends HTMLElement {
   }
 
   async fetchPostDetail() {
-    const link = `/posts${this.renderPath}` 
+    let link;
+    if (this.renderPath.indexOf('/others') === 0 ) {
+      link = this.renderPath
+    } else {  
+      link = `/posts${this.renderPath}` 
+    }
     const data = await get(link);
     if (data.indexOf('<!DOCTYPE html>') === 0) {
       return '404';

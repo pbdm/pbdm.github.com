@@ -8,7 +8,8 @@
   "scripts": {
     "init": "ln -s ../playground playground && ln -s ../posts posts && ln -s ../others others",
     "http": "http-server -c-1 -p 22222 --cors",
-    "https": "http-server -c-1 -S -C server.crt -K server.pem --cors"
+    "https": "http-server -c-1 -S -C server.crt -K server.pem --cors",
+    "tree": "node tree.js"
   },
   "devDependencies": {
     "http-server": "^0.11.1"
