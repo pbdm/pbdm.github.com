@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const MIND = 'http://localhost:22222/mind/index.html?'
-const PPT = 'http://localhost:22222/slides.html?'
+const PPT = 'http://localhost:22222/slide/index.html?'
 
 function walk (option) {
   const { dir, prefix, type } = option;
