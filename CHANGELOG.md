@@ -8,6 +8,7 @@
 * `2020-04-26`接入 [gitalk](https://gitalk.github.io/) 作为评论系统
 * `2020-07-25`接入 [dundalek/markmap](https://github.com/dundalek/markmap) 思维导图渲染
 * `2020-08-15`添加 tree 入口, 支持 blog, mind, ppt, 源码入口
+* `2020-08-19`添加 husky 和 commitizen
 
 ## 8.0 js3.0 fremework
 

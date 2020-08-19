@@ -11,8 +11,21 @@
     "https": "http-server -c-1 -S -C server.crt -K server.pem --cors",
     "tree": "node tree.js"
   },
-  "devDependencies": {
-    "http-server": "^0.11.1"
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
   },
-  "dependencies": {}
+  "devDependencies": {
+    "commitizen": "^4.1.2",
+    "cz-conventional-changelog": "^3.2.0",
+    "http-server": "^0.11.1",
+    "husky": "^4.2.5"
+  },
+  "dependencies": {},
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
