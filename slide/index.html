@@ -23,7 +23,7 @@
       if (search.indexOf('http') === 0) {
         sourceUrl = search;
       } else if (search.indexOf('others') === -1) {
-        sourceUrl = `posts/slides/${window.location.search.slice(1)}`;
+        sourceUrl = `../posts/slides/${window.location.search.slice(1)}`;
       } else {
         sourceUrl = `${window.location.search.slice(1)}`;
       }
