@@ -19,9 +19,27 @@
     <script src="https://cdn.jsdelivr.net/npm/mermaid@8.0.0-rc.8/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>
+      function loadjscssfile(filename) {
+        return new Promise((resolve, reject) => {
+          let fileref;
+          fileref = document.createElement("link")
+          fileref.setAttribute("rel", "stylesheet");
+          fileref.setAttribute("type", "text/css");
+          fileref.setAttribute("href", filename);
+          fileref.onload = resolve;
+          fileref.onerror = reject;
+          document.getElementsByTagName("head")[0].appendChild(fileref)
+        })
+      }
       const search = window.location.search.slice(1);
       if (search.indexOf('http') === 0) {
         sourceUrl = search;
+        // load custom css if exist
+        try {
+          loadjscssfile(search.replace('.md', '.css'))
+        } catch {
+
+        }
       } else if (search.indexOf('others') === -1) {
         sourceUrl = `../posts/slides/${window.location.search.slice(1)}`;
       } else {
@@ -34,6 +52,7 @@
         return '<img src="' + url + '" style="width: ' + percentage + '" />';
       };
       remark.create({
+        ratio: '16:9',
         sourceUrl: sourceUrl
       })
     </script>
