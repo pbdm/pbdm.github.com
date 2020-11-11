@@ -31,7 +31,9 @@ export class Comment extends HTMLElement {
     })
 
     this.shadowRoot.getElementById('gitalk-container').innerHTML = '';
-    gitalk.render(this.shadowRoot.getElementById('gitalk-container'))
+    if (id === '/INTRO.html') {
+      gitalk.render(this.shadowRoot.getElementById('gitalk-container'))
+    }
   }
 
 }
