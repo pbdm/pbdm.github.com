@@ -11,6 +11,8 @@ const template = `
     <span id="date"></span>
     /
     <a id="github">修改历史</a>
+    /
+    <a id="edit">编辑</a>
   </div>
   <main id="main" class="markdown-body"></main>
 `
@@ -63,6 +65,9 @@ export class Post extends HTMLElement {
   renderGithub() {
     this.githubDom = this.shadowRoot.getElementById('github');
     this.githubDom.href = `https://github.com/pbdm/posts/commits/master${this.renderPath}`;
+
+    this.editDom = this.shadowRoot.getElementById('edit');
+    this.editDom.href = `https://github.com/pbdm/posts/edit/master${this.renderPath}`;
   }
   async renderDate() {
     this.dateDom = this.shadowRoot.getElementById('date');
