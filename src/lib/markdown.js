@@ -29,7 +29,6 @@ const md = markdownit({
   try {
     frontMatterData = jsyaml.load(fm)
   } catch {
-    debugger
     frontMatterData = {}
   }
 })

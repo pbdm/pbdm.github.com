@@ -8,8 +8,8 @@ const template = `
   <link href="//cdn.jsdelivr.net/npm/prismjs@1.14.0/themes/prism-tomorrow.css" rel="stylesheet">
   <div class="info">
     <div id="tags"></div>
-    最后更新时间:
-    <span id="date"></span>
+    <span id="created"></span>
+    <span id="updated"></span>
     /
     <a id="github">修改历史</a>
     /
@@ -41,7 +41,7 @@ export class Post extends HTMLElement {
     await this.render();
     this.scrollToAnchor();
     this.renderGithub();
-    this.renderDate()
+    this.renderUpdated()
   }
 
   async fetchPostDetail() {
@@ -73,9 +73,9 @@ export class Post extends HTMLElement {
     this.editDom = this.shadowRoot.getElementById('edit');
     this.editDom.href = `https://github.com/pbdm/posts/edit/master${this.renderPath}`;
   }
-  async renderDate() {
-    this.dateDom = this.shadowRoot.getElementById('date');
-    this.dateDom.innerHTML = '';
+  async renderUpdated() {
+    const dom = this.shadowRoot.getElementById('updated');
+    dom.innerHTML = '';
     const commitInfo = await get(`https://api.github.com/repos/pbdm/posts/commits?path=${this.renderPath}&page=1&per_page=1`, 'json');
     let date
     try {
@@ -88,7 +88,7 @@ export class Post extends HTMLElement {
       console.warn(e);
       date = 'Error'
     }
-    this.dateDom.innerHTML = `${date.split('T')[0]}`;
+    dom.innerHTML = `最后修改时间：${date.split('T')[0]}`;
   }
 
   get container() {
@@ -122,6 +122,13 @@ export class Post extends HTMLElement {
     }
   }
 
+  renderCreated(date){
+    const dom = this.shadowRoot.getElementById('created');
+    if (date) {
+      dom.innerText = '创建时间：' + new Date(date).toLocaleString()
+    }
+  }
+
   renderTags(tags = []){
     const tagsDom = this.shadowRoot.getElementById('tags');
     if (tags.length > 0) {
@@ -141,6 +148,7 @@ export class Post extends HTMLElement {
     this.main.innerHTML = content;
     this.changeTitle(frontMatter.title);
     this.renderTags(frontMatter.tags);
+    this.renderCreated(frontMatter.created);
     this.renderMermaid();
     // 用于处理 import playground 里的代码
     setImport(this.main);
