@@ -10,7 +10,7 @@ export class Nav extends HTMLElement {
 
   async fetchPostList() {
     const data = await get(`/posts/SUMMARY.md`);
-    return markdown.render(data); 
+    return markdown(data).content;
   }
 
   constructor() {

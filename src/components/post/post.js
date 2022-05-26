@@ -7,6 +7,7 @@ const template = `
   <link href="//cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css" rel="stylesheet">
   <link href="//cdn.jsdelivr.net/npm/prismjs@1.14.0/themes/prism-tomorrow.css" rel="stylesheet">
   <div class="info">
+    <div id="tags"></div>
     最后更新时间:
     <span id="date"></span>
     /
@@ -55,9 +56,12 @@ export class Post extends HTMLElement {
       return '404';
     } else {
       if (data.indexOf('name') === 0) {
-        return '';
+        return {
+          content: '',
+          frontMatter: ''
+        };
       } else {
-        return `${markdown.render(data)}`;
+        return markdown(data);
       }
     }
   }
@@ -103,15 +107,40 @@ export class Post extends HTMLElement {
     })
   }
 
-  changeTitle() {
-    document.title = this.main.getElementsByTagName('h1')[0].innerText + ' | 琥珀草'
+  changeTitle(title) {
+    let res;
+    if (title) {
+      res = title;
+    } else {
+      const contentH1 = this.main.getElementsByTagName('h1');
+      if (contentH1.length > 0) {
+        res = contentH1[0].innerText
+      }
+    }
+    if (res) {
+      document.title = res + ' | 琥珀草'
+    }
+  }
+
+  renderTags(tags = []){
+    const tagsDom = this.shadowRoot.getElementById('tags');
+    if (tags.length > 0) {
+      if (Array.isArray(tags)) {
+        tagsDom.innerText = '标签：' + tags.join(' ')
+      } else {
+        tagsDom.innerText = '标签：' + tags
+      }
+    } else {
+      tagsDom.innerText = ''
+    }
   }
 
   async render() {
-    const content = await this.fetchPostDetail();
+    const { content, frontMatter = {} } = await this.fetchPostDetail();
     this.main = this.shadowRoot.getElementById('main');
     this.main.innerHTML = content;
-    this.changeTitle();
+    this.changeTitle(frontMatter.title);
+    this.renderTags(frontMatter.tags);
     this.renderMermaid();
     // 用于处理 import playground 里的代码
     setImport(this.main);

@@ -49,6 +49,9 @@ svg {
   font-size: 12px;
   float: right;
 }
+.info #tags {
+  color: #42b983;
+}
 @media (max-width: 768px) {
   .info {
     display: none;

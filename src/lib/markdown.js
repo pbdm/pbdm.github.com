@@ -1,4 +1,7 @@
 import snippet from './markdown-it-snippet.js';
+import frontMatter from './markdown-it-front-matter.js';
+
+let frontMatterData = {};
 
 const md = markdownit({
   html: true,
@@ -22,6 +25,14 @@ const md = markdownit({
 })
 .use(markdownitReplaceLink)
 .use(snippet)
+.use(frontMatter, function(fm) {
+  try {
+    frontMatterData = jsyaml.load(fm)
+  } catch {
+    debugger
+    frontMatterData = {}
+  }
+})
 .use(anchor)
 .use(markdownitTaskLists)
 .use(...createContainer('tip'))
@@ -41,4 +52,12 @@ function createContainer (type) {
   }]
 }
 
-export default md;
+const getData = function(data) {
+  frontMatterData = {};
+  return {
+    content: md.render(data),
+    frontMatter: frontMatterData
+  }
+}
+
+export default getData;
