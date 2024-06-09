@@ -2,6 +2,8 @@
 
 ## WIP: 10.0 js5.0 fremework with Typescript
 
+* `2014-06-05`引入 Typescript, Vite, Vue3
+
 ## 9.0 js4.0 fremework with WebComponents
 
 * `2020-01-21`引入 Web Components
