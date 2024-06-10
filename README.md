@@ -1,5 +1,5 @@
-# PBDm
+# 琥珀草
 
 ## Introduction
 
-[PBDm](http://pbdm.cc)'s personal site
+[琥珀草](http://pbdm.cc)的个人网站
