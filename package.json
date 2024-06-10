@@ -10,11 +10,6 @@
     "build": "vitepress build",
     "preview": "vitepress preview"
   },
-  "husky": {
-    "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
-    }
-  },
   "devDependencies": {
     "vitepress": "^1.2.3"
   },
