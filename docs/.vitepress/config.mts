@@ -31,6 +31,7 @@ export default defineConfig({
     ]
   },
   lastUpdated: true,
+  editLink: true,
   vite: {
     server: {
       port: 2222
