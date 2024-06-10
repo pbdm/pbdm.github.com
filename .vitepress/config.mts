@@ -7,7 +7,20 @@ export default defineConfig({
   lang: 'zh-Hans',
   head: [
     ['link', { rel: 'icon', href: '/img/favicon.png' }],
-    ['link', { rel: 'apple-touchicon', href: '/img/touch-icon.png' }]
+    ['link', { rel: 'apple-touchicon', href: '/img/touch-icon.png' }],
+    [
+      'script',
+      { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-LRHFRD2P8H' }
+    ],
+    [
+      'script',
+      {},
+      ` window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        gtag('config', 'G-LRHFRD2P8H');`
+    ]
   ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
