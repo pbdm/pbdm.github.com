@@ -5,6 +5,7 @@ export default defineConfig({
   title: "琥珀草",
   description: "+1s",
   lang: 'zh-Hans',
+  ignoreDeadLinks: true,
   head: [
     ['link', { rel: 'icon', href: '/img/favicon.png' }],
     ['link', { rel: 'apple-touchicon', href: '/img/touch-icon.png' }],
