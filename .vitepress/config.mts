@@ -39,9 +39,9 @@ export default defineConfig({
       {
         text: '前端标准',
         items: [
-          { text: 'WEB 标准', link: '/Web标准' },
-          { text: 'ECMAScript', link: '/ECMAScript' },
-          { text: '浏览器标准实现', link: '/浏览器标准实现' }
+          { text: 'WEB 标准', link: '/前端标准/Web标准' },
+          { text: 'ECMAScript', link: '/前端标准/ECMAScript' },
+          { text: '浏览器标准实现', link: '/前端标准/浏览器标准实现' }
         ]
       }
     ],
