@@ -11,3 +11,5 @@ static/
 others
 posts
 playground
+docs/.vitepress/cache
+docs/.vitepress/dist

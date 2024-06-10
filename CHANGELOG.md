@@ -1,6 +1,8 @@
 # CHANGELOG
 
-## WIP: 10.0 js5.0 fremework with Typescript
+## 10.0 Viteress
+
+* `2024-06-10`改为 VitePress
 
 ## 9.0 js4.0 fremework with WebComponents
 

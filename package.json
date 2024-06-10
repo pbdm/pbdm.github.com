@@ -9,7 +9,10 @@
     "init": "ln -s ../playground playground && ln -s ../posts posts",
     "http": "http-server -c-1 -p 22222 --cors",
     "https": "http-server -c-1 -S -C server.crt -K server.pem --cors",
-    "tree": "node tree.js"
+    "tree": "node tree.js",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "husky": {
     "hooks": {
@@ -20,9 +23,9 @@
     "commitizen": "^4.1.2",
     "cz-conventional-changelog": "^3.2.0",
     "http-server": "^0.11.1",
-    "husky": "^4.2.5"
+    "husky": "^4.2.5",
+    "vitepress": "^1.2.3"
   },
-  "dependencies": {},
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
