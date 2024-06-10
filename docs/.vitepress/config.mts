@@ -4,11 +4,16 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "琥珀草",
   description: "+1s",
+  lang: 'zh-Hans',
+  head: [
+    ['link', { rel: 'icon', href: '/img/favicon.png' }],
+    ['link', { rel: 'apple-touchicon', href: '/img/touch-icon.png' }]
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: '首页', link: '/' },
+      { text: '文章', link: '/markdown-examples' }
     ],
 
     sidebar: [
@@ -22,7 +27,13 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/pbdm' }
     ]
+  },
+  lastUpdated: true,
+  vite: {
+    server: {
+      port: 2222
+    } 
   }
 })

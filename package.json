@@ -10,9 +10,9 @@
     "http": "http-server -c-1 -p 22222 --cors",
     "https": "http-server -c-1 -S -C server.crt -K server.pem --cors",
     "tree": "node tree.js",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
   },
   "husky": {
     "hooks": {
