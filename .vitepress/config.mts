@@ -18,7 +18,7 @@ export default defineConfig({
       ` window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        
+
         gtag('config', 'G-LRHFRD2P8H');`
     ]
   ],
@@ -29,17 +29,23 @@ export default defineConfig({
       { text: '文章', link: '/README' },
       { text: 'CHANGELOG', link: '/CHANGELOG' }
     ],
-
+  
     sidebar: [
       {
-        text: 'Examples',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: '简介', link: '/README' },
+        ]
+      },
+      {
+        text: '前端标准',
+        items: [
+          { text: 'WEB 标准', link: '/Web标准' },
+          { text: 'ECMAScript', link: '/ECMAScript' },
+          { text: '浏览器标准实现', link: '/浏览器标准实现' }
         ]
       }
     ],
-
+  
     socialLinks: [
       { icon: 'github', link: 'https://github.com/pbdm' }
     ]
