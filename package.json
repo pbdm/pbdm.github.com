@@ -1,19 +1,14 @@
 {
   "name": "pbdm.cc",
-  "version": "9.0.0",
+  "version": "10.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/pbdm/pbdm.github.com.git"
   },
   "scripts": {
-    "init": "ln -s ../playground playground && ln -s ../posts posts",
-    "http": "http-server -c-1 -p 22222 --cors",
-    "https": "http-server -c-1 -S -C server.crt -K server.pem --cors",
-    "tree": "node tree.js",
-    "dev": "vitepress dev posts",
-    "build": "vitepress build posts",
-    "preview": "vitepress preview posts",
-    "update:posts": "git submodule update --recursive --remote"
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
   },
   "husky": {
     "hooks": {
@@ -21,18 +16,9 @@
     }
   },
   "devDependencies": {
-    "commitizen": "^4.1.2",
-    "cz-conventional-changelog": "^3.2.0",
-    "http-server": "^0.11.1",
-    "husky": "^4.2.5",
     "vitepress": "^1.2.3"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.6.1"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
