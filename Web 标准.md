@@ -38,7 +38,7 @@
 - [~~HTML - W3C~~](https://www.w3.org/TR/html/)
 	- [~~HTML Editor’s Draft - W3C~~](https://w3c.github.io/html/)
 - [HTML/W3C-WHATWG-Differences](https://www.w3.org/wiki/HTML/W3C-WHATWG-DifferenHTML)
-- [以后都将以 WHATWG 的 HTML 和 [[DOM]] 为标准了](https://www.w3.org/blog/news/archives/7753)
+- [以后都将以 WHATWG 的 HTML 和 DOM 为标准了](https://www.w3.org/blog/news/archives/7753)
 ### ECMAScript
 - [ECMAScript Language Specification(ECMA-262)](http://www.ecma-international.org/ecma-262/)
 - [ECMAScript® 2016 Language Specification](http://www.ecma-international.org/ecma-262/7.0/index.html)
@@ -48,18 +48,7 @@
 [State of Javascript](https://stateofjs.com/)
 [Map of Javascript](https://github.com/mechaniac/Map-of-Javascript)
 [Javascript 20年](https://github.com/doodlewind/jshistory-cn)
-## JS 引擎
-- [[V8]] — open source, developed by Google, written in [[C++]], used in [[Chrome]](blink) and nodejs
-- JavaScriptCore — open source, marketed as Nitro and developed by Apple for Safari(webkit)
-	- [[React Native]] 默认使用的也是 JavaScriptCore
-- Chakra - `JScript9` for Internet Explorer and `JavaScript` for Microsoft Edge
-- SpiderMonkey — the first JavaScript engine, which back in the days powered Netscape Navigator, and today powers Firefox
 
-- Rhino — managed by the Mozilla Foundation, open source, developed entirely in Java
-- KJS — KDE’s engine originally developed by Harri Porten for the KDE project’s Konqueror web browser
-- Nashorn - open source as part of OpenJDK, written by Oracle [[JAVA]] Languages and Tool Group
-- JerryScript — is a lightweight engine for the Internet of Things
-- [QuickJS](https://github.com/quickjs-zh/QuickJS) - 小型并且可嵌入的Javascript引擎，它支持 ES2020 规范, 包括模块, 异步生成器和代理器
 ### CSS
 - [CSS SPEC­I­FI­CA­TIONS](https://www.w3.org/Style/CSS/current-work)
 - [正在修改的 CSS 标准列表(Up­com­ing)](https://drafts.csswg.org/)
@@ -71,7 +60,11 @@
 - [Node.js ES support](https://node.green/)
 - [WebKit Feature Status](https://webkit.org/status/)
 - [Chrome Platform Status](https://www.chromestatus.com/features)
-- [Web Bugs](https://github.com/webcompat/web-bugs/issues): 一个搜集浏览器适配 BUG 的地方
+- [Web Bugs](https://github.com/webcompat/web-bugs/issues): 一个搜集浏览器适配 BUG 的地方 
+- [实验功能](https://web.dev/learn/pwa/experimental)
+	- [Chrome](https://developer.chrome.com/origintrials/#/trials/active)
+	- [Edge](https://microsoftedge.github.io/MSEdgeExplainers/origin-trials/)(部分复用 Chrome)
+	- Safari：只支持用户自行打开
 ### Blink
 2013年从 Webkit fork
 Blink and Chromium are not really separable anymore, 所以他们的 source code 是在一起的
@@ -87,28 +80,37 @@ Blink and Chromium are not really separable anymore, 所以他们的 source code
 - [Blink homepage](https://www.chromium.org/blink)
 	- [Blink source code](https://chromium.googlesource.com/chromium/src/+/refs/heads/master/third_party/blink)
 	- [~~Blink 源码目录现在还叫webkit~~](https://groups.google.com/a/chromium.org/forum/#!topic/platform-architecture-dev/DKQn-SILZzo/discussion)
--  Origin Trials
-	- [Chrome](https://developer.chrome.com/origintrials/#/trials/active)
-	- [Edge](https://microsoftedge.github.io/MSEdgeExplainers/origin-trials/)(部分复用 Chrome)
 ### Webkit
 - [getting the code](https://webkit.org/getting-the-code/)
 - [source code](https://trac.webkit.org/browser/webkit/trunk)
 - [source code mirror in github](https://github.com/WebKit/webkit)
 ### Servo
+
 基于 Rust, Mozilla 的实验性项目，支持**并行**渲染！！等着他并入 firefox 的那一天吧。 [source code](https://github.com/servo/servo)
+
+### JS 引擎
+
+- [[V8]] — open source, developed by Google, written in [[C++]], used in [[Chrome]](blink) and nodejs
+- JavaScriptCore — open source, marketed as Nitro and developed by Apple for Safari(webkit)
+	- [[React Native]] 默认使用的也是 JavaScriptCore
+- Chakra - `JScript9` for Internet Explorer and `JavaScript` for Microsoft Edge
+- SpiderMonkey — the first JavaScript engine, which back in the days powered Netscape Navigator, and today powers Firefox
+
+- Rhino — managed by the Mozilla Foundation, open source, developed entirely in Java
+- KJS — KDE’s engine originally developed by Harri Porten for the KDE project’s Konqueror web browser
+- Nashorn - open source as part of OpenJDK, written by Oracle [[JAVA]] Languages and Tool Group
+- JerryScript — is a lightweight engine for the Internet of Things
+- [QuickJS](https://github.com/quickjs-zh/QuickJS) - 小型并且可嵌入的Javascript引擎，它支持 ES2020 规范, 包括模块, 异步生成器和代理器
 ## 标准测试工具
+
 - [web-platform-tests](https://web-platform-tests.org/) WEB 标准的回归测试
 - [Test262: ECMAScript Test Suite](https://github.com/tc39/test262)
 	- [Test262 Report](https://test262.report/)
 - [HTML5 test: how well does your browser support html5?](http://html5test.com/)
 - [Acid2 测试, 如果渲染正确, 浏览器打开测试页面会看到一个笑脸(已过时)](https://www.webstandards.org/action/acid2/index.html)
 - [Acid3 测试, 满分 100 分](http://acid3.acidtests.org/)
-
-> [[2017-06-30-从 Web 标准到 Web Components]]
->
-> [[2023-06-01-前端标准制定流程和发展]]
-> 
-> [Index - Web Development History](https://webdevelopmenthistory.com/index/)
+ 
+> [Web Development History](https://webdevelopmenthistory.com/index/)
 > 
 > [ES6、ES7、ES8、ES9、ES10新特性一览 by 上沅兮](https://juejin.im/post/5ca2e1935188254416288eb2)
 > 
