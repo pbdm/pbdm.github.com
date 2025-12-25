@@ -57,10 +57,17 @@
         opacity: 0;
       }
 
+      .links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+        animation: fadeInUp 0.8s ease-out 0.4s forwards;
+        opacity: 0;
+      }
+
       a {
         position: relative;
-        margin-top: 1rem;
-        padding: 0.75rem 2.5rem;
+        padding: 0.75rem 2rem;
         border-radius: 9999px;
         background: linear-gradient(90deg, #2563eb, #3b82f6);
         color: white;
@@ -70,10 +77,15 @@
         box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
         transition: all 0.3s ease;
         overflow: hidden;
-        animation: fadeInUp 0.8s ease-out 0.4s forwards;
-        opacity: 0;
+        display: inline-flex;
+        align-items: center;
       }
       
+      a.github {
+        background: linear-gradient(90deg, #1f2937, #374151);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      }
+
       a::after {
         content: '';
         position: absolute;
@@ -90,6 +102,10 @@
         box-shadow: 0 8px 25px rgba(37, 99, 235, 0.6);
       }
       
+      a.github:hover {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      }
+      
       a:hover::after {
         left: 100%;
       }
@@ -98,7 +114,10 @@
   <body>
     <img src="head.jpg" alt="head" width="300" height="300" />
     <h1>PENG Bo</h1>
-    <a href="https://blog.pbdm.cc">进入博客</a>
+    <div class="links">
+      <a href="https://blog.pbdm.cc">进入博客</a>
+      <a href="https://github.com/pbdm" class="github">GitHub</a>
+    </div>
   </body>
 </html>
 
