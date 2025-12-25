@@ -9,15 +9,90 @@
   <link rel="shortcut icon" href="favicon.png" />
   <link rel="apple-touch-icon" href="touch-icon.png" />
   <style>
-    table {
-      margin: 0 auto;
-      text-align: center;
+    :root {
+      --bg-start: #0f172a;
+      --bg-end: #1e293b;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --card-hover: rgba(255, 255, 255, 0.1);
+      --highlight: #60a5fa;
     }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      height: 100vh; /* 强制全屏高度 */
+      overflow: hidden; /* 核心：禁止滚动 */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      color: #e2e8f0;
+    }
+    table {
+      border-collapse: separate;
+      border-spacing: 0 1.5vh; /* 间距随高度缩放 */
+      width: 90%;
+      max-width: 600px;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(2vh); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    tr {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      transition: all 0.2s ease;
+      animation: slideIn 0.4s ease-out forwards;
+      opacity: 0;
+      cursor: default;
+      height: 6.5vh; /* 每行高度固定比例 */
+    }
+    tr:hover {
+      transform: scale(1.02);
+      background: var(--card-hover);
+      position: relative;
+      z-index: 10;
+    }
+    td {
+      padding: 0 4vw;
+      border: none;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    td:first-child {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+      color: #94a3b8;
+      font-weight: 500;
+      font-size: 2.2vh;
+    }
+    td:last-child {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+      font-weight: 800; 
+      text-align: right; 
+      font-size: 2.8vh; /* 字体调小以容纳时间 */
+      color: var(--highlight);
+      text-shadow: 0 0 2vh rgba(59, 130, 246, 0.4);
+      font-feature-settings: "tnum";
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; /* 使用等宽字体防止抖动 */
+    }
+    
+    /* Animation delays */
+    tr:nth-child(1) { animation-delay: 0.05s; }
+    tr:nth-child(2) { animation-delay: 0.1s; }
+    tr:nth-child(3) { animation-delay: 0.15s; }
+    tr:nth-child(4) { animation-delay: 0.2s; }
+    tr:nth-child(5) { animation-delay: 0.25s; }
+    tr:nth-child(6) { animation-delay: 0.3s; }
+    tr:nth-child(7) { animation-delay: 0.35s; }
+    tr:nth-child(8) { animation-delay: 0.4s; }
+    tr:nth-child(9) { animation-delay: 0.45s; }
+    tr:nth-child(10) { animation-delay: 0.5s; }
   </style>
 </head>
 <body>
-  <table>
-  </table>
+  <table></table>
   <script>
     const data = {
       "入职哔哩哔哩": "2020-05-07",
@@ -30,36 +105,42 @@
       "初中毕业": '2000-06-30',
       "小学毕业": '1997-06-30',
       "出生": '1986-09-01',
-    }
-    const table = document.getElementsByTagName('table')[0];
+    };
+    
+    const table = document.querySelector('table');
     const fragment = document.createDocumentFragment();
+    const cells = []; // 缓存单元格引用
 
-    // setInterval(refresh, 1000);
-    print();
+    // 初始化表格结构
+    Object.keys(data).forEach((key) => {
+      const line = document.createElement('tr');
+      const keyCell = document.createElement('td');
+      keyCell.textContent = key;
+      const valCell = document.createElement('td');
+      
+      line.appendChild(keyCell);
+      line.appendChild(valCell);
+      fragment.appendChild(line);
+      
+      cells.push({ el: valCell, date: new Date(data[key]) });
+    });
+    table.appendChild(fragment);
 
-    function print() {
+    function update() {
       const now = new Date();
-      Object.keys(data).forEach((key) => {
-        const line = document.createElement('tr');
-        const countDownString = now - new Date(data[key]);
-        const day = Math.floor( countDownString / 1000 / 60 / 60 / 24 );
-        // const hours = Math.floor( countDownString / 1000 / 60 / 60 % 24 );
-        // const min = Math.floor(countDownString / 1000 / 60 % 60);
-        // const sec = Math.floor(countDownString / 1000 % 60);
-        const colKey = document.createElement('td');
-        colKey.textContent = key;
-        const colValue = document.createElement('td');
-        colValue.textContent = `${day}`;
-        const colUnit = document.createElement('td');
-        colUnit.textContent = `天`;
-        line.appendChild(colKey)
-        line.appendChild(colValue)
-        line.appendChild(colUnit)
-        fragment.appendChild(line);
-      })
-      table.innerHTML = '';
-      table.appendChild(fragment);
+      cells.forEach(({ el, date }) => {
+        const diff = now - date;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24).toString().padStart(2, '0');
+        const mins = Math.floor((diff / (1000 * 60)) % 60).toString().padStart(2, '0');
+        const secs = Math.floor((diff / 1000) % 60).toString().padStart(2, '0');
+        
+        el.textContent = `${days}天 ${hours}:${mins}:${secs}`;
+      });
+      requestAnimationFrame(update);
     }
+    
+    update();
   </script>
 </body>
 
